@@ -1,0 +1,7 @@
+export default function Menu() {
+  return (
+    <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.98584 0.985718H13.4858M0.98584 7.88572H16.9858M4.98584 14.7857H16.9858" stroke="#2A7F62" strokeWidth="1.97143" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+  )
+}
