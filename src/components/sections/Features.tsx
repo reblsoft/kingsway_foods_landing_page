@@ -1,174 +1,148 @@
-const Features = () => {
-return (
-<section className="w-full mx-auto bg-linear-to-br md:py-16 py-10 from-[#2a7f62] via-[#2a7f62] to-[#31ae83]">
-    <div className="lg:gap-6 gap-2.5 grid text-center w-full mb-12">
-        <h4 className="text-[15px] text-white/80 underline underline-offset-4 decoration-2 tracking-wider">FEATURES</h4>
-        <h1 className="text-white lg:text-5xl text-[28px] font-bold">Awesome Features</h1>
-    </div>
-    
-    <div className="container mobile-bg mx-auto px-4">
-        {/* Desktop Layout */}
-        <div className="hidden md:flex justify-center items-center gap-6 lg:gap-10 xl:gap-16 max-w-7xl mx-auto">
-            {/* Left Features */}
-            <div className="flex-1 max-w-md h-full py-16">
-                <ul className="list-none space-y-0">
-                    <li className="group" dir="rtl">
-                        <div className="flex flex-row">
-                            <div className="items-center flex flex-col justify-around">
-                                <div className="border-l-2 h-full border-white"></div>
-                                <div className="bg-[#f0745e] border-4 border-white rounded-full h-5 w-5 shrink-0"></div>
-                                <div className="border-l-2 h-full border-white"></div>
-                            </div>
-                            <div className="flex flex-col mr-4 pb-10 lg:pb-12">
-                                <h3 className="text-lg lg:text-[22px] font-semibold text-white">Browse & Order Food</h3>
-                                <p className="text-sm lg:text-base text-white/80 leading-relaxed">View menus, daily specials, add to cart, and choose delivery or pickup.</p>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li className="group" dir="rtl">
-                        <div className="flex flex-row">
-                            <div className="items-center flex flex-col justify-around">
-                                <div className="border-l-2 h-full border-white"></div>
-                                <div className="bg-[#f0745e] border-4 border-white rounded-full h-5 w-5 shrink-0"></div>
-                                <div className="border-l-2 h-full border-white"></div>
-                            </div>
-                            <div className="flex flex-col mr-4 pb-10 lg:pb-12">
-                                <h3 className="text-lg lg:text-[22px] font-semibold text-white mb-1.5">Built-in Wallet System</h3>
-                                <p className="text-sm lg:text-base text-white/80 leading-relaxed">Add funds, pay with wallet, and link beneficiaries to use wallet or loyalty points.</p>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li className="group" dir="rtl">
-                        <div className="flex flex-row">
-                            <div className="items-center flex flex-col justify-around">
-                                <div className="border-l-2 h-full border-white"></div>
-                                <div className="bg-[#f0745e] border-4 border-white rounded-full h-5 w-5 shrink-0"></div>
-                                <div className="border-l-2 h-full border-white"></div>
-                            </div>
-                            <div className="flex flex-col mr-4">
-                                <h3 className="text-lg lg:text-[22px] font-semibold text-white mb-1.5">Gamified Loyalty Program</h3>
-                                <p className="text-sm lg:text-base text-white/80 leading-relaxed">Play in-app Kingsway Q&A games to earn redeemable points.</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-            {/* Center Phone */}
-            <div className="shrink-0 w-[220px] lg:w-[260px] xl:w-[298px] mt-8">
-                <img src="/images/mobileUi.png" alt="Mobile App Interface" className="w-full h-auto" />
-            </div>
-            
-            {/* Right Features */}
-            <div className="flex-1 max-w-md">
-                <ul className="list-none space-y-0">
-                    <li className="group">
-                        <div className="flex flex-row">
-                            <div className="items-center flex flex-col justify-around">
-                                <div className="border-l-2 h-full border-white"></div>
-                                <div className="bg-[#f0745e] border-4 border-white rounded-full h-5 w-5 shrink-0"></div>
-                                <div className="border-l-2 h-full border-white"></div>
-                            </div>
-                            <div className="flex flex-col ml-4 pb-10 lg:pb-12">
-                                <h3 className="text-lg lg:text-[22px] font-semibold text-white mb-1.5">Referral Bonuses</h3>
-                                <p className="text-sm lg:text-base text-white/80 leading-relaxed">Invite friends and earn points or cash rewards for successful referrals.</p>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li className="group">
-                        <div className="flex flex-row">
-                            <div className="items-center flex flex-col justify-around">
-                                <div className="border-l-2 h-full border-white"></div>
-                                <div className="bg-[#f0745e] border-4 border-white rounded-full h-5 w-5 shrink-0"></div>
-                                <div className="border-l-2 h-full border-white"></div>
-                            </div>
-                            <div className="flex flex-col ml-4 pb-10 lg:pb-12">
-                                <h3 className="text-lg lg:text-[22px] font-semibold text-white mb-1.5">Real-Time Delivery Tracking</h3>
-                                <p className="text-sm lg:text-base text-white/80 leading-relaxed">Track the rider on GPS, see ETA, and follow the rider`s route.</p>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li className="group">
-                        <div className="flex flex-row">
-                            <div className="items-center flex flex-col justify-around">
-                                <div className="border-l-2 h-full border-white"></div>
-                                <div className="bg-[#f0745e] border-4 border-white rounded-full h-5 w-5 shrink-0"></div>
-                                <div className="border-l-2 h-full border-white"></div>
-                            </div>
-                            <div className="flex flex-col ml-4">
-                                <h3 className="text-lg lg:text-[22px] font-semibold text-white mb-1.5">Ratings & Feedback</h3>
-                                <p className="text-sm lg:text-base text-white/80 leading-relaxed">Rate meals and riders, and send suggestions or recommendations.</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        {/* Mobile & Tablet Layout */}
-        <div className="md:hidden flex flex-col max-w-2xl mx-auto">
-            {/* Top Features with Timeline */}
-            <div className="relative pl-8 mb-8">
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-white"></div>
-                
-                <div className="space-y-8">
-                    <div className="relative">
-                        <div className="absolute -left-[31px] top-1 w-4 h-4 bg-[#f0745e] rounded-full border-4 border-white"></div>
-                        <h3 className="font-semibold text-xl sm:text-[22px] text-white mb-1.5">Browse & Order Food</h3>
-                        <p className="text-sm sm:text-base text-white/90 leading-relaxed">View menus, daily specials, add to cart, and choose delivery or pickup.</p>
-                    </div>
-                    
-                    <div className="relative">
-                        <div className="absolute -left-[31px] top-1 w-4 h-4 bg-[#f0745e] rounded-full border-4 border-white"></div>
-                        <h3 className="font-semibold text-xl sm:text-[22px] text-white mb-1.5">Built-in Wallet System</h3>
-                        <p className="text-sm sm:text-base text-white/90 leading-relaxed">Add funds, pay with wallet, and link beneficiaries to use wallet or loyalty points.</p>
-                    </div>
-                    
-                    <div className="relative">
-                        <div className="absolute -left-[31px] top-1 w-4 h-4 bg-[#f0745e] rounded-full border-4 border-white"></div>
-                        <h3 className="font-semibold text-xl sm:text-[22px] text-white mb-1.5">Gamified Loyalty Program</h3>
-                        <p className="text-sm sm:text-base text-white/90 leading-relaxed">Play in-app Kingsway Q&A games to earn redeemable points.</p>
-                    </div>
-                </div>
-            </div>
-            
-            {/* Phone Image */}
-            <div className="w-full max-w-[280px] sm:max-w-[320px] mx-auto mb-8">
-                <img src="/images/mobileUi.png" alt="Mobile App" className="w-full h-auto" />
-            </div>
-            
-            {/* Bottom Features with Timeline */}
-            <div className="relative pl-8">
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-white"></div>
-                
-                <div className="space-y-8">
-                    <div className="relative">
-                        <div className="absolute -left-[31px] top-1 w-4 h-4 bg-[#f0745e] rounded-full border-4 border-white"></div>
-                        <h3 className="font-semibold text-xl sm:text-[22px] text-white mb-1.5">Referral Bonuses</h3>
-                        <p className="text-sm sm:text-base text-white/90 leading-relaxed">Invite friends and earn points or cash rewards for successful referrals.</p>
-                    </div>
-                    
-                    <div className="relative">
-                        <div className="absolute -left-[31px] top-1 w-4 h-4 bg-[#f0745e] rounded-full border-4 border-white"></div>
-                        <h3 className="font-semibold text-xl sm:text-[22px] text-white mb-1.5">Real-Time Delivery Tracking</h3>
-                        <p className="text-sm sm:text-base text-white/90 leading-relaxed">Track the rider on GPS, see ETA, and follow the rider`s route.</p>
-                    </div>
-                    
-                    <div className="relative">
-                        <div className="absolute -left-[31px] top-1 w-4 h-4 bg-[#f0745e] rounded-full border-4 border-white"></div>
-                        <h3 className="font-semibold text-xl sm:text-[22px] text-white mb-1.5">Ratings & Feedback</h3>
-                        <p className="text-sm sm:text-base text-white/90 leading-relaxed">Rate meals and riders, and send suggestions or recommendations.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-)
-}
+import React from "react";
+import Image from "next/image";
 
-export default Features
+const Features = () => {
+  const leftFeatures = [
+    {
+      title: "Browse & Order Food",
+      description:
+        "View Menus, Daily Specials, Add To Cart, And Choose Delivery Or Pickup.",
+    },
+    {
+      title: "Built-In Wallet System",
+      description:
+        "Add Funds, Pay With Wallet, And Link Beneficiaries To Use Wallet Or Loyalty Points.",
+    },
+    {
+      title: "Gamified Loyalty Program",
+      description: "Play In-App Kingsway Q&A Games To Earn Redeemable Points.",
+    },
+  ];
+
+  const rightFeatures = [
+    {
+      title: "Referral Bonuses",
+      description:
+        "Invite Friends And Earn Points Or Cash Rewards For Successful Referrals.",
+    },
+    {
+      title: "Real-Time Delivery Tracking",
+      description:
+        "Track The Rider On GPS, See ETA, And Follow The Rider's Route.",
+    },
+    {
+      title: "Ratings & Feedback",
+      description:
+        "Rate Meals And Riders, And Send Suggestions Or Recommendations.",
+    },
+  ];
+
+  return (
+    <div className="h-full bg-[url('/images/wholebg.png')] bg-cover bg-center flex items-center justify-center py-20">
+      <div className="flex flex-col w-full gap-16 justify-center items-center px-4">
+        {/* Header */}
+        <div className="flex-col flex gap-2.5 items-center justify-center">
+          <div className="underline text-white text-base tracking-wider">
+            FEATURES
+          </div>
+          <div className="text-white text-5xl font-bold">Awesome Features</div>
+        </div>
+
+        {/* Features Layout */}
+        <div className="relative flex lg:flex-row flex-col items-center justify-center w-full max-w-7xl">
+          {/* Left Features */}
+          <div className="flex-1 flex lg:justify-end justify-start lg:pr-8 pl-8">
+            <div className="relative">
+              {/* Vertical line */}
+              <div
+                className="
+        absolute top-0 bottom-0 w-0.5 bg-white
+        left-0 lg:left-auto lg:right-0
+      "
+              ></div>
+
+              {/* Steps */}
+              <div className="space-y-20 lg:py-52 md:py-4 py-8">
+                {leftFeatures.map((feature, index) => (
+                  <div key={index} className="relative">
+                    {/* Content */}
+                    <div
+                      className="
+              pl-12
+              lg:pl-0 lg:pr-12
+              text-left lg:text-right
+              max-w-md
+            "
+                    >
+                      <h3 className="text-white text-xl font-semibold mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-white/90 text-sm leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+
+                    {/* Circle indicator */}
+                    <div
+                      className="
+              absolute
+              left-0 lg:left-auto lg:right-0
+              top-0
+              -translate-x-1/2 lg:translate-x-1/2
+            "
+                    >
+                      <div className="w-4 h-4 rounded-full bg-[#F0745E] border-4 border-white"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Center Phone */}
+          <div className="shrink-0 z-10">
+            <Image
+              src="/images/mobileUi.svg"
+              alt="Phone"
+              width={350}
+              height={700}
+              className="drop-shadow-2xl"
+            />
+          </div>
+
+          {/* Right Features */}
+          <div className="flex-1 flex justify-start pl-8">
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-white"></div>
+
+              {/* Steps */}
+              <div className="space-y-20 lg:py-52 md:py-4 sm:py-4 py-8">
+                {rightFeatures.map((feature, index) => (
+                  <div key={index} className="relative">
+                    {/* Content */}
+                    <div className="pl-12 text-left max-w-md">
+                      <h3 className="text-white text-xl font-semibold mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-white/90 text-sm leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+
+                    {/* Circle indicator */}
+                    <div className="absolute left-0 top-0 transform -translate-x-1/2">
+                      <div className="w-4 h-4 rounded-full bg-[#F0745E] border-4 border-white"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Features;
