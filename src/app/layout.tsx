@@ -27,9 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`min-h-screen scrollbar-hidden lg:pt-6 font-[Mansfield] flex flex-col`}
+        className={`min-h-screen scrollbar-hidden font-[Mansfield] flex flex-col`}
       >
-        {/* <Header /> */}
+        <Header />
         {children}
         <Footer />
       </body>

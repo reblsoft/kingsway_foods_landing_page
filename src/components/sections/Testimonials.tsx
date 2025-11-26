@@ -24,7 +24,10 @@ const Testimonials = () => {
 
             <div className="flex gap-8.5 items-center">
               <img src="/icons/arrow-left.svg" alt="" className="" />
+              <span className="rounded-[30px] bg-white w-[60px] h-[35px] ">
+
               <img src="/icons/arrow-right.svg" alt="" className="" />
+              </span>
             </div>
 
           </div>
