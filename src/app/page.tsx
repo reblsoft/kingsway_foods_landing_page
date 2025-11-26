@@ -20,7 +20,7 @@ export default function Home() {
     >
 
 
-    <div className="scrollbar-hidden">
+    <div className="scrollbar-hidden bg-[#f5f8f7]">
 
       <HeroSection/>
       <AboutUs />

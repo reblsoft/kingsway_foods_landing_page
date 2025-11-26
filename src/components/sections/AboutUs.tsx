@@ -29,7 +29,7 @@ const AboutUs = () => {
 
           <div className="flex-col py-8 md:py-10 lg:py-12 flex gap-5 justify-center items-center">
             <div className="w-20 h-20 lg:w-24 lg:h-24 flex items-center justify-center rounded-full bg-white shrink-0">
-              <img src="/icons/level-up.svg" alt="" className="bg-cover" />
+              <img src="/icons/green-shopping-bag.svg" alt="" className="bg-cover" />
             </div>
 
             <div className="flex-col flex max-w-[280px] gap-4 items-center text-center">
@@ -40,7 +40,7 @@ const AboutUs = () => {
 
           <div className="flex-col py-8 md:py-10 lg:py-12 flex gap-5 justify-center items-center sm:col-span-2 md:col-span-1">
             <div className="w-20 h-20 lg:w-24 lg:h-24 flex items-center justify-center rounded-full bg-white shrink-0">
-              <img src="/icons/level-up.svg" alt="" className="bg-cover" />
+              <img src="/icons/discount.svg" alt="" className="bg-cover" />
             </div>
 
             <div className="flex-col flex max-w-[280px] gap-4 items-center text-center">

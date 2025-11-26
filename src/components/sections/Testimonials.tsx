@@ -1,6 +1,6 @@
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="flex flex-col md:py-24 gap-4 md:gap-[45px] px-6 max-md:py-24.5 bg-[#f5f8f7] w-full mx-auto md:px-32 lg:px-[153px]">
+    <section id="testimonials" className="flex flex-col md:py-24 gap-4 md:gap-[45px] px-6 max-md:py-24.5  w-full mx-auto md:px-32 lg:px-[153px]">
         <div className="w-full text-center mx-auto  flex-col flex gap-6">
           <h3 className="underline bg-linear-to-r from-[#2a7f62] from-29% text-[15px] to-[#31ae83] to-100% text-transparent bg-clip-text decoration-[#2a7f62] decoration-2 underline-offset-4">TESTIMONIALS</h3>
             <h1 className="text-[#252b33] font-bold text-[28px] md:text-4xl lg:text-5xl">Client Reviews</h1>
