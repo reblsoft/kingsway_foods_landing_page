@@ -44,7 +44,7 @@ useEffect(() => {
 
 
   return (
-    <section id="about-us" className='flex-col flex w-full items-center py-20 lg:gap-10.5'>
+    <section id="about-us" className='flex-col flex w-full bg-[] items-center py-20 lg:gap-10.5'>
       <div className="lg:gap-6 gap-2.5 grid text-center w-full">
         <h4 className="underline bg-linear-to-r from-[#2a7f62] from-29% text-[15px] to-[#31ae83] to-100% text-transparent bg-clip-text decoration-[#2a7f62] decoration-2 underline-offset-4">SCREENSHOTS</h4>
 
