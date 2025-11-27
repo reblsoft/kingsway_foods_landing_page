@@ -35,16 +35,16 @@ const Header = () => {
         menuOpen ? "max-h-[700px]" : "max-h-28 max-md:max-h-20"
       }`}
     >
-      <div className="w-full h-20 md:h-28 px-4 lg:py-6 sm:px-6 lg:px-[156px]">
-        <div className="relative flex items-center w-full h-full justify-between max-md:py-2.5 max-md:px-6">
+      <div className="mx-auto w-11/12 max-w-[1605px] h-20 md:h-28 lg:py-6">
+        <div className="relative flex items-center w-full h-full justify-between max-md:py-2.5">
           <img
             src="/images/Logo.svg"
             alt="Logo"
-            className="max-w-[110px] max-h-[65px] w-full h-full max-md:max-w-20"
+            className="max-w-[110px] max-h-[65px] w-full h-full max-lg:max-w-20"
           />
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {nav_links.map((link) => (
               <button
                 key={link.href}
@@ -61,7 +61,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="p-2 text-gray-700 hover:text-gray-900 w-full hover:bg-gray-50 rounded-lg transition-all duration-200"
@@ -78,7 +78,7 @@ const Header = () => {
 
       {/* Mobile Menu - always mounted */}
       <div
-        className={`md:hidden flex flex-col w-full gap-10 px-4 py-4 transition-all duration-300 overflow-hidden
+        className={`lg:hidden flex flex-col w-full gap-10 px-4 py-4 transition-all duration-300 overflow-hidden
       ${menuOpen ? "opacity-100 max-h-[600px]" : "opacity-0 max-h-0"}
     `}
       >

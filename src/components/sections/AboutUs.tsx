@@ -124,7 +124,7 @@ const AboutUs = () => {
               <div className="text-xl font-semibold  text-[#252b33] text-center leading-relaxed">
                 {item.capText}
               </div>
-              <div className="text-gray-600 text-base text-center  text-[#252b33] leading-relaxed">
+              <div className="text-base text-center  text-[#252b33] leading-relaxed">
                 {item.subText}
               </div>
             </div>
