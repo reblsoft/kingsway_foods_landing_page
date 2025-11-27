@@ -2,7 +2,7 @@
 
 const ContactUs = () => {
   return (
-    <section id="home" className='flex flex-col lg:flex-row w-full justify-around bg-white items-center max-md:pb-10'>
+    <section id="contact" className='flex flex-col lg:flex-row w-full justify-around bg-white items-center max-md:pb-10'>
         <div className="lg:w-1/3 w-full">
           <img src="/images/noodles.svg"alt="" className="" />
         </div>

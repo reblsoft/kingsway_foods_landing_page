@@ -108,7 +108,7 @@ const featureCards = [
 
 const AboutUs = () => {
   return (
-    <div className="w-full items-center bg-[#F5F8F7] justify-center ">
+    <div className="w-full items-center bg-[#F5F8F7] justify-center " id="about">
       <div className="max-w-7xl mx-auto flex flex-col">
         <div className="flex-col flex gap-2.5 items-center justify-center">
           <div className="underline bg-linear-to-r from-[#2a7f62] from-29% text-[15px] to-[#31ae83] to-100% text-transparent bg-clip-text decoration-[#2a7f62] decoration-2 underline-offset-4 text-base tracking-wider">ABOUT US</div>

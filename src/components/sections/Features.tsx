@@ -38,7 +38,7 @@ const Features = () => {
   ];
 
   return (
-    <div className="h-full bg-[url('/images/wholebg.png')] bg-cover bg-center flex items-center justify-center py-20">
+    <div className="h-full bg-[url('/images/wholebg.png')] bg-cover bg-center flex items-center justify-center py-20" id="features">
       <div className="flex flex-col w-full gap-16 justify-center items-center px-4">
         {/* Header */}
         <div className="flex-col flex gap-2.5 items-center justify-center">
@@ -100,7 +100,7 @@ const Features = () => {
           </div>
 
           {/* Center Phone */}
-          <div className="shrink-0 z-10">
+          <div className="shrink-0 z-5">
             <Image
               src="/images/mobileUi.png"
               alt="Phone"

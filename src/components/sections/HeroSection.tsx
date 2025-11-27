@@ -1,7 +1,7 @@
 
 const HeroSection = () => {
   return (
-    <section className="bg-center bg-cover w-full h-full lg:flex grid max-lg:pt-[148px] max-lg:pb-16 max-lg:gap-[61px] items-center justify-center mx-auto bg-[url('/images/heroSection.png')] xl:py-[167px] max-w-[2024px]">
+    <section id="home" className="bg-center bg-cover w-full h-full lg:flex grid max-lg:pt-[148px] max-lg:pb-16 max-lg:gap-[61px] items-center justify-center mx-auto bg-[url('/images/heroSection.png')] xl:py-[167px] max-w-[2024px]">
       
       <div className="gap-10 xl:gap-16 max-md:px-6 max-w-[600px] mx-auto flex flex-col lg:items-start justify-between">
         <div className="flex-col flex  gap-5 max-md:text-center">

@@ -1,5 +1,5 @@
 "use client";
-
+// korkoe
 import useActiveSection from "@/hooks/useActiveSection";
 import { scrollToSection } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -13,7 +13,7 @@ const Header = () => {
     { href: "#home", title: "Home" },
     { href: "#about", title: "About" },
     { href: "#features", title: "Features" },
-    { href: "#screenshot", title: "Screenshot" },
+    { href: "#screenshots", title: "Screenshots" },
     { href: "#testimonials", title: "Testimonials" },
     { href: "#contact", title: "Contact" },
   ];
@@ -30,12 +30,20 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white/50 border-b border-gray-100 sticky top-0 z-10 backdrop-blur-2xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16">
+      <header
+        className={`w-[95%] max-w-[1428px] fixed top-3 lg:top-[25px] left-1/2 -translate-x-1/2 bg-white/40 border border-white/30 p-2 pl-5 md:pl-7 overflow-hidden z-50 rounded-full
+    transition-[height,border-radius] ease-in-out
+    ${
+      menuOpen
+        ? "max-lg:h-[330px] max-lg:rounded-[29px] duration-[500ms,0ms] delay-[0ms,0ms] backdrop-blur-sm"
+        : "max-lg:h-14 duration-[500ms,700ms] delay-[0ms,500ms] backdrop-blur-xs"
+    }`}
+      >
+      <div className="w-full px-4 lg:py-6  sm:px-6 lg:px-[156px]">
+        <div className="relative flex items-center w-full justify-between h-16 max-md:py-2.5 max-md:px-6">
 
           {/* Logo */}
-          <img src="/images/Logo.svg" alt="Logo" className="h-8 w-auto" />
+          <img src="/images/Logo.svg" alt="Logo" className="max-w-[110px] max-h-[65px] w-full h-full max-md:max-w-[64px] max-md:max-h-10" />
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -44,11 +52,11 @@ const Header = () => {
                 key={link.href}
                 onClick={(e) => handleSmoothScroll(e, link.href)}
                 className={`
-                  text-sm font-medium transition-colors duration-200 
+                  text-[15px] font-bold transition-colors duration-200 
                   ${
                     activeSection === link.href.slice(1)
-                      ? "text-green-600"
-                      : "text-gray-700 hover:text-gray-900"
+                      ? "bg-linear-to-r from-[#2a7f62] from-29% to-[#31ae83] to-100% text-transparent bg-clip-text"
+                      : "text-[#252b33] cursor-pointer hover:text-gray-900"
                   }
                 `}
               >
@@ -57,24 +65,17 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Desktop Right Icons */}
-          <div className="hidden md:flex items-center space-x-2">
-            <a
-              href="/collections/all"
-              className="p-2 cursor-pointer text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200"
-              aria-label="Search"
-            ></a>
-          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all duration-200"
+              className="p-2 text-gray-700 hover:text-gray-900 w-full hover:bg-gray-50 rounded-lg transition-all duration-200"
               aria-label="Toggle mobile menu"
             >
               {/* Insert hamburger icon here */}
               {/* Example: <Menu className="w-6 h-6" /> */}
+              <img src="/icons/menu.svg" alt="" className="" />
             </button>
           </div>
         </div>
@@ -82,17 +83,17 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4">
+        <div className="md:hidden absolute bg-white/50 flex-col flex w-full gap-10 border-t backdrop-blur-2xl border-gray-100 px-4 py-4 space-y-4">
           {nav_links.map((link) => (
             <button
               key={link.href}
               onClick={(e) => handleSmoothScroll(e, link.href)}
               className={`
-                block w-full text-left text-gray-700 text-base py-2
+                w-full text-center leading-relaxed font-bold text-gray-700 text-base py-2
                 ${
                   activeSection === link.href.slice(1)
-                    ? "text-green-600 font-medium"
-                    : "hover:text-gray-900"
+                    ? "bg-linear-to-r from-[#2a7f62] from-29% to-[#31ae83] to-100% text-transparent bg-clip-text"
+                    : "text-[#252b33]"
                 }
               `}
             >
