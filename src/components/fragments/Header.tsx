@@ -31,23 +31,19 @@ const Header = () => {
 
   return (
     <header
-      className={`bg-white/50 sticky top-0 z-10 backdrop-blur-2xl transition-[height,border-radius] ease-in-out
-      ${
-        menuOpen
-          ? "bg-red-300"
-          : "bg-blue-300"
+      className={`bg-white/50 fixed top-0 z-10 backdrop-blur-md w-full transition-[max-height] duration-300 ease-in-out overflow-hidden ${
+        menuOpen ? "max-h-[700px]" : "max-h-28 max-md:max-h-20"
       }`}
     >
-      <div className="w-full px-4 lg:py-6 sm:px-6 lg:px-[156px]">
-        <div className="relative flex items-center w-full justify-between h-16 max-md:py-2.5 max-md:px-6">
-          {/* Logo */}
+      <div className="w-full h-20 md:h-28 px-4 lg:py-6 sm:px-6 lg:px-[156px]">
+        <div className="relative flex items-center w-full h-full justify-between max-md:py-2.5 max-md:px-6">
           <img
             src="/images/Logo.svg"
             alt="Logo"
-            className="max-w-[110px] max-h-[65px] w-full h-full max-md:max-w-[64px] max-md:max-h-10"
+            className="max-w-[110px] max-h-[65px] w-full h-full max-md:max-w-20"
           />
-{/* 0205555305 */}
-          {/* Desktop Navigation */}
+
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
             {nav_links.map((link) => (
               <button
@@ -56,7 +52,7 @@ const Header = () => {
                 className={`text-[15px] font-bold transition-colors duration-200 ${
                   activeSection === link.href.slice(1)
                     ? "bg-linear-to-r from-[#2a7f62] from-29% to-[#31ae83] to-100% text-transparent bg-clip-text"
-                    : "text-[#252b33] cursor-pointer hover:text-gray-900"
+                    : "text-[#252b33] hover:text-gray-900"
                 }`}
               >
                 {link.title}
@@ -64,14 +60,12 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Button */}
           <div className="md:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="p-2 text-gray-700 hover:text-gray-900 w-full hover:bg-gray-50 rounded-lg transition-all duration-200"
-              aria-label="Toggle mobile menu"
             >
-              {/* Show hamburger icon when menu is closed, close icon when open */}
               {!menuOpen ? (
                 <img src="/icons/menu.svg" alt="Menu" />
               ) : (
@@ -82,24 +76,26 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden transition-all ease-in-out flex-col flex w-full gap-10   backdrop-blur-sm border-gray-100 px-4 py-4 space-y-4">
-          {nav_links.map((link) => (
-            <button
-              key={link.href}
-              onClick={(e) => handleSmoothScroll(e, link.href)}
-              className={`w-full text-center leading-relaxed font-bold text-gray-700 text-base py-2 ${
-                activeSection === link.href.slice(1)
-                  ? "bg-linear-to-r from-[#2a7f62] from-29% to-[#31ae83] to-100% text-transparent bg-clip-text"
-                  : "text-[#252b33]"
-              }`}
-            >
-              {link.title}
-            </button>
-          ))}
-        </div>
-      )}
+      {/* Mobile Menu - always mounted */}
+      <div
+        className={`md:hidden flex flex-col w-full gap-10 px-4 py-4 transition-all duration-300 overflow-hidden
+      ${menuOpen ? "opacity-100 max-h-[600px]" : "opacity-0 max-h-0"}
+    `}
+      >
+        {nav_links.map((link) => (
+          <button
+            key={link.href}
+            onClick={(e) => handleSmoothScroll(e, link.href)}
+            className={`w-full text-center leading-relaxed font-bold text-base py-2 ${
+              activeSection === link.href.slice(1)
+                ? "bg-linear-to-r from-[#2a7f62] from-29% to-[#31ae83] to-100% text-transparent bg-clip-text"
+                : "text-[#252b33]"
+            }`}
+          >
+            {link.title}
+          </button>
+        ))}
+      </div>
     </header>
   );
 };
