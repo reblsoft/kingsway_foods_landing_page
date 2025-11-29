@@ -1,37 +1,83 @@
+"use client";
+import React from "react";
 
-const HeroSection = () => {
+const AboutUs = () => {
   return (
-    <section id="home" className="bg-center bg-cover lg:pl-10 xl:pl-0 w-full h-full lg:flex grid max-xl:pt-[148px] max-lg:pb-16 max-lg:gap-[61px] items-center justify-center mx-auto bg-[url('/images/heroSection.png')] xl:py-[167px] max-w-[2024px]">
+    <>
+      <style jsx>{`
+        @keyframes bop {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-50px);
+          }
+        }
+        
+        .bop-animation-1 {
+          animation: bop 3s ease-in-out infinite;
+        }
+        
+        .bop-animation-2 {
+          animation: bop 3s ease-in-out infinite;
+          animation-delay: 0.5s;
+        }
+      `}</style>
       
-      <div className="gap-10 xl:gap-16 max-md:px-6 max-w-[600px] mx-auto flex flex-col lg:items-start justify-between">
-        <div className="flex-col flex max-lg:w-full mx-auto  gap-5 max-lg:text-center max-lg:max-w-2/3">
-          <h1 className="font-bold font-[BricolageGrotesque]  max-lg:text-center text-left text-[40px] lg:text-6xl xl:text-[80px]">
-            <span className="bg-linear-to-r from-[#2a7f62] from-29% to-[#31ae83] to-100% text-transparent bg-clip-text">Kingsway Food </span>
-            <span className=" text-[#252B33]">Delivery App</span>
+      <div id="home" className="w-full min-h-screen bg-white flex items-center justify-center overflow-hidden relative">
+      <div className="absolute top-1/4 -right-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 z-10 hidden lg:block bop-animation-1">
+        <img
+          src="/images/rice.svg"
+          alt="Food Bowl"
+          className="w-full h-full object-contain"
+        />
+      </div>
+      <div className="absolute bottom-0 -left-12 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-84 lg:h-84 z-10 hidden lg:block bop-animation-2">
+        <img
+          src="/images/salad.svg"
+          alt="Food Bowl"
+          className="w-full h-full object-contain"
+        />
+      </div>
+
+      <div className="max-w-11/12 xl:mt-28 mx-auto  w-full grid grid-cols-1 lg:grid-cols-2 gap-12 max-lg:justify-center max-lg:items-center">
+        {/* Left Column: Text Content */}
+        <div className="flex flex-col max-lg:text-center space-y-8 z-10">
+          <h1 className="text-5xl font-[BricolageGrotesque] lg:text-7xl font-bold text-[#1F2937] leading-tight">
+            <span className="text-[#2F9E73]">Kingsway Food</span> <br />
+            Delivery App
           </h1>
 
-          <p className="text-[#252B33] text-base font-semibold">Order from our new Kingsway Foods app and enjoy your favourite dishes delivered fresh, fast, easy, and convenient.</p>
+          <p className="text-lg text-gray-600 max-w-md mx-auto lg:mx-0 leading-relaxed">
+            Order From Our New Kingsway Foods App And Enjoy Your Favourite
+            Dishes Delivered Fresh, Fast, Easy, And Convenient.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center lg:justify-start items-center">
+            <button className="px-8 py-4 bg-[linear-gradient(112.8deg,#2A7F62_27.86%,#31AE83_100%)] text-white font-semibold rounded-full hover:bg-[#258560] transition-colors duration-300 shadow-lg text-lg w-full max-w-xs sm:w-auto sm:max-w-none">
+              Download Our App
+            </button>
+            <button className="px-8 py-4 bg-white text-[#1F2937] font-semibold rounded-full border border-[#2F9E73] hover:bg-gray-50 transition-colors duration-300 shadow-sm text-lg w-full max-w-xs sm:w-auto sm:max-w-none">
+              View Our Menu
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-center justify-center lg:justify-start flex-wrap gap-4 md:gap-5 w-full md:w-auto">
-          <button className="text-white w-full sm:w-auto md:w-auto px-8 md:px-10 xl:px-10.5 py-2.5 md:py-3 xl:py-2.5 text-base md:text-lg xl:text-base font-semibold bg-[linear-gradient(104deg,#2a7f62_28%,#31ae83_100%)] rounded-[30px] hover:opacity-90 transition-opacity">
-            Download Our App
-          </button>
-
-          <button className="border-2 border-[#32A071] px-8 md:px-10 xl:px-10.5 py-2.5 md:py-3 xl:py-2.5 w-full sm:w-auto md:w-auto rounded-[30px] text-base md:text-lg xl:text-base font-semibold bg-white text-[#252B33] hover:bg-gray-50 transition-colors">
-            View Our Menu
-          </button>
+        {/* Right Column: Phone Image */}
+        <div className="relative flex justify-center items-center z-10 w-full">
+          {/* Main Phone Image */}
+          <div className="relative z-20 w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[800px]">
+            <img
+              src="/images/mobileUiHand.svg"
+              alt="Kingsway Food Delivery App Interface"
+              className="w-full h-auto object-contain drop-shadow-2xl"
+            />
+          </div>
         </div>
       </div>
-
-
-      <div className="xl:w-1/3 flex mx-auto w-2/3 justify-center lg:w-1/2">
-        <img src="/images/mobileUiHand.png" alt="" className="w-full max-md:mx-auto" />
       </div>
-    </section>
-  )
-}
+    </>
+  );
+};
 
-export default HeroSection
-
-
+export default AboutUs;

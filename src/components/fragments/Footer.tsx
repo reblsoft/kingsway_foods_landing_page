@@ -2,16 +2,13 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className='w-full bg-[#f5f8f7] grid 
-        max-md:px-7 max-md:py-9.5 
-        md:px-16 md:py-10
-        lg:px-28 lg:pt-12.5 lg:pb-9 
-        gap-[100px] lg:gap-5'>
+    <footer className='w-full bg-[#f5f8f7]'>
 
       <div className="
+        max-w-[1605px] mx-auto w-11/12
         flex items-start
-        max-md:flex-col max-md:gap-12.5
-        md:flex-row md:justify-between md:items-center md:gap-10
+        max-md:flex-col
+        md:flex-row md:justify-between md:items-center
         lg:justify-between lg:items-center
       ">
         
