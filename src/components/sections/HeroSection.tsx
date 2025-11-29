@@ -25,7 +25,7 @@ const AboutUs = () => {
       `}</style>
       
       <div id="home" className="w-full min-h-screen bg-white flex items-center justify-center overflow-hidden relative">
-      <div className="absolute top-1/4 -right-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 z-10 hidden lg:block bop-animation-1">
+      <div className="absolute top-1/4 right-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 z-10 hidden lg:block bop-animation-1">
         <img
           src="/images/rice.svg"
           alt="Food Bowl"
@@ -66,7 +66,7 @@ const AboutUs = () => {
         {/* Right Column: Phone Image */}
         <div className="relative flex justify-center items-center z-10 w-full">
           {/* Main Phone Image */}
-          <div className="relative z-20 w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[800px]">
+          <div className="relative z-10 w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[800px]">
             <img
               src="/images/mobileUiHand.svg"
               alt="Kingsway Food Delivery App Interface"

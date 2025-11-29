@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <header
-      className={`bg-white/50 fixed top-0 z-10 backdrop-blur-md w-full transition-[max-height] duration-300 ease-in-out overflow-hidden ${
+      className={`bg-white/50 fixed top-0 z-20 backdrop-blur-md w-full transition-[max-height] duration-300 ease-in-out overflow-hidden ${
         menuOpen ? "max-h-[700px]" : "max-h-28 max-md:max-h-20"
       }`}
     >
