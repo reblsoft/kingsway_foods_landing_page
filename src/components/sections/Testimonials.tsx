@@ -36,13 +36,41 @@ const Testimonials = () => {
   const reviewsLeft = reviews.length - currentIndex - 1;
 
   return (
-    <section id="testimonials" className="flex flex-col md:py-24 gap-4 md:gap-[45px] px-6 max-md:py-24.5 w-full mx-auto md:px-32 lg:px-[153px]">
+
+    <>      
+    <style jsx>{`
+        @keyframes bop {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-50px);
+          }
+        }
+        
+        .bop-animation-1 {
+          animation: bop 3s ease-in-out infinite;
+        }
+        
+        .bop-animation-2 {
+          animation: bop 3s ease-in-out infinite;
+          animation-delay: 0.5s;
+        }
+      `}</style>
+    <section id="testimonials" className="flex relative flex-col md:py-24 gap-4 md:gap-[45px] px-6 max-md:py-24.5 w-full mx-auto md:px-32 lg:px-[153px]">
+      <div className="absolute bottom-0 -left-20 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-84 lg:h-84 z-10 hidden lg:block bop-animation-2">
+        <img
+          src="/images/samosa.svg"
+          alt="Food Bowl"
+          className="w-full h-full object-contain"
+        />
+      </div>
       <div className="w-full text-center mx-auto flex-col flex gap-6">
         <h3 className="underline bg-linear-to-r from-[#2a7f62] from-29% text-[15px] to-[#31ae83] to-100% text-transparent bg-clip-text decoration-[#2a7f62] decoration-2 underline-offset-4">TESTIMONIALS</h3>
         <h1 className="text-[#252b33] font-bold text-[28px] md:text-4xl lg:text-5xl">Client Reviews</h1>
       </div>
 
-      <aside className="flex flex-col md:flex-row items-center gap-14 md:justify-center w-full">
+      <aside className="flex flex-col md:flex-row items-center gap-14 md:justify-center mx-auto w-11/12 max-w-[1605px] ">
         <div className="flex-col flex md:w-4/6 lg:w-2/3 gap-7.5 lg:max-w-[665px]">
           <p className="text-[#252b33] text-base lg:text-lg leading text-justify lg:text-left">
             {currentReview.text}
@@ -89,6 +117,7 @@ const Testimonials = () => {
         </div>
       </aside>
     </section>
+    </>
   );
 };
 

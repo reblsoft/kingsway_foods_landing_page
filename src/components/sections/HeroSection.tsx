@@ -39,6 +39,20 @@ const AboutUs = () => {
           className="w-full h-full object-contain"
         />
       </div>
+      <div className="absolute top-1/2 right-0 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 z-10 block lg:hidden bop-animation-1">
+        <img
+          src="/images/rice.svg"
+          alt="Food Bowl"
+          className="w-full h-full object-contain"
+        />
+      </div>
+      <div className="absolute bottom-0 -left-12 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-84 lg:h-84 z-10 block lg:hidden bop-animation-2">
+        <img
+          src="/images/salad.svg"
+          alt="Food Bowl"
+          className="w-full h-full object-contain"
+        />
+      </div>
 
       <div className="w-11/12 xl:mt-28 mx-auto max-w-[1605px] max-lg:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 max-lg:justify-center max-lg:items-center">
         {/* Left Column: Text Content */}
