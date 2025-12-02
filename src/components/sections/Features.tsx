@@ -42,10 +42,10 @@ const Features = () => {
       <div className="flex flex-col w-full gap-16 justify-center items-center px-4">
         {/* Header */}
         <div className="flex-col flex gap-2.5 items-center justify-center">
-          <div className="underline text-white text-base tracking-wider">
+          <div className="underline text-white text-[15px] tracking-wider">
             FEATURES
           </div>
-          <div className="text-white text-5xl font-bold">Awesome Features</div>
+          <div className="text-white text-center text-[28px] md:text-4xl lg:text-5xl font-bold">Awesome Features</div>
         </div>
 
         {/* Features Layout */}

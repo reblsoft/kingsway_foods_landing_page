@@ -10,7 +10,7 @@ const ContactUs = () => {
 
           <div className="flex-col flex gap-4 lg:gap-[15px] w-full items-center text-center">
             <h3 className="underline bg-linear-to-r from-[#2a7f62] from-29% text-[15px] to-[#31ae83] to-100% text-transparent bg-clip-text decoration-[#2a7f62] decoration-2 underline-offset-4">CONTACT US</h3>
-            <h1 className="lg:text-5xl text-xl font-bold text-[#252b33]">Get In Touch With Us!</h1>
+            <h1 className="text-[28px] md:text-4xl lg:text-5xl font-bold text-[#252b33]">Get In Touch With Us!</h1>
           </div>
 
           <form action="" className="flex-col mx-auto flex w-full gap-[15px]">

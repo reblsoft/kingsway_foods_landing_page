@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 const AboutUs = () => {
@@ -71,9 +72,9 @@ const AboutUs = () => {
             <button className="px-8 py-4 bg-[linear-gradient(112.8deg,#2A7F62_27.86%,#31AE83_100%)] text-white font-semibold rounded-full hover:bg-[#258560] transition-colors duration-300 shadow-lg text-lg w-full max-w-xs sm:w-auto sm:max-w-none">
               Download Our App
             </button>
-            <button className="px-8 py-4 bg-white text-[#1F2937] font-semibold rounded-full border border-[#2F9E73] hover:bg-gray-50 transition-colors duration-300 shadow-sm text-lg w-full max-w-xs sm:w-auto sm:max-w-none">
+            <Link href={"/our-menu"} className="px-8 py-4 bg-white text-[#1F2937] font-semibold rounded-full border border-[#2F9E73] hover:bg-gray-50 transition-colors duration-300 shadow-sm text-lg w-full max-w-xs sm:w-auto sm:max-w-none">
               View Our Menu
-            </button>
+            </Link>
           </div>
         </div>
 
