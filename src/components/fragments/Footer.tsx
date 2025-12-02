@@ -5,11 +5,13 @@ const Footer = () => {
     <footer className='w-full bg-[#f5f8f7]'>
 
       <div className="
+        
+          py-16
         max-w-[1605px] mx-auto w-11/12
         flex items-start
-        max-md:flex-col
-        md:flex-row md:justify-between md:items-center
-        lg:justify-between lg:items-center
+        max-lg:flex-col
+        max-lg:gap-[50px]
+        md:flex-row md:justify-between md:items-center lg:items-center
       ">
         
         {/* Logo */}
@@ -63,8 +65,8 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="w-full mx-auto lg:text-center md:text-center">
-        <p className="text-[#252b33] text-xs md:text-sm lg:text-base" suppressHydrationWarning>
+      <div className="w-full mx-auto my-5 lg:text-center md:text-center">
+        <p className="text-[#252b33] text-center text-xs md:text-sm lg:text-base" suppressHydrationWarning>
           Copyright © {new Date().getFullYear()} Kingsway Foods
         </p>
       </div>
