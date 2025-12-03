@@ -102,7 +102,7 @@ const Features = () => {
           {/* Center Phone */}
           <div className="shrink-0 z-5">
             <Image
-              src="/images/mobileUi.png"
+              src="/images/featuresPhone.png"
               alt="Phone"
               width={350}
               height={700}
