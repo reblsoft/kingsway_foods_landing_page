@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 
-const AboutUs = () => {
+const Home = () => {
   return (
     <>
       <style jsx>{`
@@ -14,6 +14,14 @@ const AboutUs = () => {
             transform: translateY(-50px);
           }
         }
+        @keyframes bop2 {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
         
         .bop-animation-1 {
           animation: bop 3s ease-in-out infinite;
@@ -23,31 +31,35 @@ const AboutUs = () => {
           animation: bop 3s ease-in-out infinite;
           animation-delay: 0.5s;
         }
+        .bop-animation-3 {
+          animation: bop2 3s ease-in-out infinite;
+          animation-delay: 0.5s;
+        }
       `}</style>
       
       <div id="home" className="w-full min-h-screen bg-[url('/images/heroSection.png')] bg-center bg-cover  bg-white flex items-center justify-center overflow-hidden relative">
-      <div className="absolute top-1/4 right-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 z-10 hidden lg:block bop-animation-1">
+      <div className="absolute top-1/4 right-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 xl:w-72 xl:h-72 z-10 hidden lg:block bop-animation-1">
         <img
           src="/images/rice.svg"
           alt="Food Bowl"
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute bottom-0 -left-12 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-84 lg:h-84 z-10 hidden lg:block bop-animation-2">
+      <div className="absolute bottom-0 -left-12 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 xl:w-84 xl:h-84 z-10 hidden lg:block bop-animation-2">
         <img
           src="/images/salad.svg"
           alt="Food Bowl"
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute top-1/2 right-0 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 z-10 block lg:hidden bop-animation-1">
+      <div className="absolute top-1/2 right-0 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 xl:w-72 xl:h-72 z-10 block lg:hidden bop-animation-1">
         <img
           src="/images/rice.svg"
           alt="Food Bowl"
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute bottom-0 -left-12 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-84 lg:h-84 z-10 block lg:hidden bop-animation-2">
+      <div className="absolute bottom-0 -left-12 w-36 h-36 sm:w-44 sm:h-44 md:w-64 md:h-64 xl:w-84 xl:h-84 z-10 block lg:hidden bop-animation-2">
         <img
           src="/images/salad.svg"
           alt="Food Bowl"
@@ -55,9 +67,10 @@ const AboutUs = () => {
         />
       </div>
 
-      <div className="w-11/12 xl:mt-28 mx-auto max-w-[1605px] max-lg:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 max-lg:justify-center max-lg:items-center">
+
+      <div className="w-10/12mx-auto max-w-[1605px] max-lg:mt-20 xl:mt-28  grid grid-cols-1 lg:grid-cols-2 gap-12 max-lg:justify-center max-lg:items-center">
         {/* Left Column: Text Content */}
-        <div className="flex flex-col max-lg:text-center  space-y-8 z-10">
+        <div className="flex flex-col max-lg:text-center justify-center space-y-8 z-10">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-[BricolageGrotesque] xl:text-[80px] font-bold text-[#1F2937] leading-tight">
             <span className="text-[#2F9E73] text-nowrap">Kingsway Food</span> <br />
             <span className="text-nowrap">Delivery App</span>
@@ -82,9 +95,17 @@ const AboutUs = () => {
         <div className="relative flex justify-center items-center z-10 w-full">
           {/* Main Phone Image */}
           <div className="relative z-10 w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]">
-            <img src="/images/heroPhone.png" alt="" className="w-full h-full max-xl:hidden" />
+            <img src="/images/holdingPhoneMobile.svg" alt="" className="w-full h-full max-xl:hidden" />
             <img src="/images/holdingPhoneMobile.svg" alt="" className="w-full h-full xl:hidden" />
           </div>
+          <button
+            onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
+            className="absolute bottom-0 cursor-pointer -left-10 max-lg:hidden w-fit flex gap-1 items-center"
+          >
+            <img src="/icons/scrollToBottom.svg" alt="" className="bop-animation-3 w-5 h-7.5" />
+            <span className="font-normal text-[#808080] text-sm">Scroll Down</span>
+          </button>
+
         </div>
       </div>
       </div>
@@ -92,4 +113,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default Home;
