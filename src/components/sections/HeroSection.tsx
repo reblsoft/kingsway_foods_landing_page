@@ -45,21 +45,21 @@ const Home = () => {
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute bottom-0 -left-12 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 xl:w-84 xl:h-84 z-10 hidden lg:block bop-animation-2">
+      <div className="absolute bottom-0 -left-12 w-36 h-36 sm:w-40 sm:h-40 md:w-64 md:h-64 xl:w-84 xl:h-84 z-10 hidden lg:block bop-animation-2">
         <img
           src="/images/salad.svg"
           alt="Food Bowl"
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute top-1/2 right-0 w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 xl:w-72 xl:h-72 z-10 block lg:hidden bop-animation-1">
+      <div className="absolute top-1/2 right-0 w-36 h-36 sm:w-40 sm:h-40 md:w-64 md:h-64 xl:w-72 xl:h-72 z-10 block lg:hidden bop-animation-1">
         <img
           src="/images/rice.svg"
           alt="Food Bowl"
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute bottom-0 -left-12 w-36 h-36 sm:w-44 sm:h-44 md:w-64 md:h-64 xl:w-84 xl:h-84 z-10 block lg:hidden bop-animation-2">
+      <div className="absolute bottom-0 -left-12 w-36 h-36 sm:w-40 sm:h-40 md:w-64 md:h-64 xl:w-84 xl:h-84 z-10 block lg:hidden bop-animation-2">
         <img
           src="/images/salad.svg"
           alt="Food Bowl"
