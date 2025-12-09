@@ -45,7 +45,7 @@ const Home = () => {
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute bottom-0 -left-12 w-36 h-36 sm:w-40 sm:h-40 md:w-64 md:h-64 xl:w-84 xl:h-84 z-10 hidden lg:block bop-animation-2">
+      <div className="absolute bottom-0 -left-12 w-36 h-36 sm:w-40 sm:h-40 md:w-64 md:h-64 xl:w-72 xl:h-72 z-10 hidden lg:block bop-animation-2">
         <img
           src="/images/salad.svg"
           alt="Food Bowl"
@@ -59,7 +59,7 @@ const Home = () => {
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute bottom-0 -left-12 w-36 h-36 sm:w-40 sm:h-40 md:w-64 md:h-64 xl:w-84 xl:h-84 z-10 block lg:hidden bop-animation-2">
+      <div className="absolute bottom-0 -left-12 w-36 h-36 sm:w-40 sm:h-40 md:w-64 md:h-64 xl:w-72 xl:h-72 z-10 block lg:hidden bop-animation-2">
         <img
           src="/images/salad.svg"
           alt="Food Bowl"

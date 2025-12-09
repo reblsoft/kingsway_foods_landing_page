@@ -32,10 +32,10 @@ const Header = () => {
   return (
     <header
       className={`bg-white/50 fixed top-0 z-20 backdrop-blur-md w-full transition-[max-height] duration-300 ease-in-out overflow-hidden ${
-        menuOpen ? "max-h-[700px]" : "max-h-28 max-xl:max-h-20"
+        menuOpen ? "max-h-[500px]" : "max-h-28 max-xl:max-h-20"
       }`}
     >
-      <div className="mx-auto w-10/12 max-w-[1605px] h-20 xl:h-28 lg:py-6">
+      <div className="mx-auto w-10/12 max-w-[1605px] h-16 xl:h-28 lg:py-4">
         <div className="relative flex items-center w-full h-full justify-between max-md:py-2.5">
           <img
             src="/images/Logo.svg"
