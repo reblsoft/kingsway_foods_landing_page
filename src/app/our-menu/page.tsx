@@ -1,5 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { allFoods } from "@/lib/data";
+import FoodCard from "@/components/fragments/FoodCard";
 
 const Page = () => {
   const router = useRouter();
@@ -84,9 +86,22 @@ const Page = () => {
     <div className="gap-[60px] grid w-full h-full">
         <div className="flex-col gap-[15px] flex w-full">
             <div className="flex w-full justify-between items-center">
-                <h3 className="text-[#1E1E1E] text-xl text-left font-medium">Local</h3>
+                <h3 className="text-[#1E1E1E] text-xl text-left font-medium">Local Dishes</h3>
                 <button className="font-medium text-xl text-right text-[#2a7f62] cursor-pointer">View All</button>
             </div>
+
+          <div className="flex gap-[30px]">
+            {allFoods.map((food,index)=>(
+              <FoodCard
+                key={food.id}
+                image={food.image}
+                title={food.title}
+                price={food.price}
+                rating={food.rating}
+                discountedPrice={food.discountedPrice}
+              />
+            ))}
+          </div>
         </div>
     </div>
       </div>

@@ -35,8 +35,8 @@ const Header = () => {
         menuOpen ? "max-h-[500px]" : "max-h-28 max-xl:max-h-20"
       }`}
     >
-      <div className="mx-auto w-10/12 max-w-[1605px] h-16 xl:h-28 lg:py-4">
-        <div className="relative flex items-center w-full h-full justify-between max-md:py-2.5">
+      <div className="mx-auto w-10/12 max-w-[1605px] h-14 lg:h-16 xl:h-20 2xl:h-28 lg:py-4">
+        <div className="relative flex items-center w-full h-full justify-between max-md:py-3">
           <img
             src="/images/Logo.svg"
             alt="Logo"

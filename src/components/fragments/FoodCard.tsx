@@ -2,18 +2,18 @@
     image,
     title,
     price,
-    reviews,
+    rating,
     discountedPrice,
     }: {
     image: string;
     title: string;
     price: string;
-    reviews: string;
+    rating: number;
     discountedPrice?: string;
     }) => {
     return (
         <div className="max-w-[196px] w-full flex flex-col max-h-[197px]">
-        <div className="max-h-1/2 h-full w-full rounded-[10px] overflow-hidden ">
+        <div className="max-w-[196px] h-full max-h-[121px] w-full rounded-[10px] overflow-hidden ">
             <img src={image} alt="" className="w-full h-full object-cover" />
         </div>
 
@@ -26,22 +26,23 @@
 
             <div className="flex items-center w-full">
             <div className="grid gap-[7px]">
-                <h4
-                className={`text-xs font-bold ${
+
+                <h4 className="flex gap-4 items-center">
+                    <span className={`text-xs font-bold ${
                     discountedPrice
                     ? "line-through text-gray-400"
                     : "text-[#2A7F62]"
-                }`}
-                >
-                {price}
+                    }`}>
+                        {price}
+                    </span>
+                    {discountedPrice && (
+                        <span className="text-[10px] text-[#2A7F62] font-semibold">
+                            {discountedPrice}
+                        </span>
+                    )}
                 </h4>
-                {discountedPrice && (
-                <h2 className="text-[10px] text-[#2A7F62] font-semibold">
-                    {discountedPrice}
-                </h2>
-                )}
-                <h5 className="flex gap-1 items-center">
-                <span className="w-3 h-3">
+                <h5 className="flex gap-2 items-center">
+                <span className="">
                     <svg
                     width="12"
                     height="12"
@@ -55,7 +56,9 @@
                     />
                     </svg>
                 </span>
-                {reviews} Reviews
+                <span className="text-[#848A9C] text-[10px] font-bold">
+                {rating} Reviews
+                </span>
                 </h5>
             </div>
             </div>
