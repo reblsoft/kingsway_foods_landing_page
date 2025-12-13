@@ -12,14 +12,14 @@
     discountedPrice?: string;
     }) => {
     return (
-        <div className="max-w-[196px] w-full flex flex-col max-h-[197px]">
-        <div className="max-w-[196px] h-full max-h-[121px] w-full rounded-[10px] overflow-hidden ">
+        <div className="w-full flex flex-col max-h-[197px]">
+        <div className="h-full w-full rounded-[10px] overflow-hidden ">
             <img src={image} alt="" className="w-full h-full object-cover" />
         </div>
 
         <div className="flex flex-col p-4 gap-[7px]">
             <div className="flex gap-4 items-center">
-            <h2 className="font-bold text-xs font-[Mansfield] text-black">
+            <h2 className="font-bold text-xs text-nowrap font-[Mansfield] text-black">
                 {title}
             </h2>
             </div>

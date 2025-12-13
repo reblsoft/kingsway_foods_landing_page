@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Footer = () => {
@@ -7,7 +8,7 @@ const Footer = () => {
       <div className="
         
           py-16
-        max-w-[1605px] mx-auto w-11/12
+        max-w-[1605px] mx-auto w-10/12
         flex items-start
         max-lg:flex-col
         max-lg:gap-[50px]
@@ -15,14 +16,14 @@ const Footer = () => {
       ">
         
         {/* Logo */}
-        <div className="
+        <Link href={'/'} className="
           w-full object-cover
           max-md:max-w-[121px] max-md:max-h-[72px]
           md:max-w-[150px] md:max-h-[90px] 
           lg:max-w-[181px] lg:max-h-[108px]
         ">
           <img src="/images/kingswayLogo.svg" alt="Kingsway Placeholder" className="w-full" />
-        </div>
+        </Link>
 
         {/* Navigation Links */}
         <ul className="

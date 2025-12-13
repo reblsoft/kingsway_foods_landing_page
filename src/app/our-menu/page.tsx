@@ -2,18 +2,62 @@
 import { useRouter } from "next/navigation";
 import { allFoods } from "@/lib/data";
 import FoodCard from "@/components/fragments/FoodCard";
+import { useState, useLayoutEffect, useRef } from "react";  
 
 const Page = () => {
   const router = useRouter();
+  const [expandedCategories, setExpandedCategories] = useState({});
+  const [cardsPerRow, setCardsPerRow] = useState(5);
+  const gridRef = useRef(null);
+
+
+
+  useLayoutEffect(() => {
+    const updateCardsPerRow = () => {
+      if (gridRef.current) {
+        const gridComputedStyle = window.getComputedStyle(gridRef.current);
+        const gridColumnValue = gridComputedStyle.getPropertyValue('grid-template-columns');
+        const columnCount = gridColumnValue.split(' ').length;
+        setCardsPerRow(columnCount);
+      }
+    };
+
+    updateCardsPerRow();
+    window.addEventListener('resize', updateCardsPerRow);
+    return () => window.removeEventListener('resize', updateCardsPerRow);
+  }, []);
+
+
+    const categories = [
+    { key: "local", title: "Local Dishes" },
+    { key: "continental", title: "Continental" },
+    { key: "asian", title: "Asian Cuisine" },
+    { key: "international", title: "International" },
+    { key: "snacks", title: "Snacks" },
+    { key: "most-wanted", title: "Most Wanted" },
+    { key: "top-rated", title: "Top Rated" },
+    { key: "new", title: "New Arrivals" }
+  ];
+
+  const getFoodsByCategory = (categoryTag) => {
+    return allFoods.filter(food => food.tags.includes(categoryTag));
+  };
+
+  const toggleCategory = (categoryKey) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [categoryKey]: !prev[categoryKey]
+    }));
+  };
   return (
     <div className="bg-white max-lg:mt-20 xl:mt-28 w-full h-full">
-      <div className="max-w-[1605px] w-10/12 flex-col flex mx-auto gap-20.5 py-20.5">
+      <div className="max-w-[1605px] w-10/12 flex-col flex mx-auto gap-10.5 py-10.5 lg:gap-20.5 lg:py-20.5">
 
       {/* menu header  */}
-        <div className="flex justify-between h-full py-[8.5px] w-full items-center">
+        <div className="flex max-lg:flex-col max-lg:gap-10.5 max-lg:items-start justify-between h-full py-[8.5px] w-full items-center">
           <div className="flex w-fit gap-[9px]">
             <button
-              className="rounded-[5px] px-[15px] text-nowrap cursor-pointer font-bold text-[13px] w-full bg-[#2a7f6219] text-[#32a071] text-center py-2"
+              className="rounded-[5px] px-[15px] text-nowrap cursor-pointer font-bold text-[13px] w-full bg-[#2a7f6219] text-[#32a071] hover:bg-green-100 text-center py-2"
               type="button"
               onClick={() => router.back()}
             >
@@ -25,7 +69,7 @@ const Page = () => {
             </span>
           </div>
 
-          <div className="flex gap-3.5 items-center">
+          <div className="flex gap-3.5 max-w-[562px] items-center max-lg:justify-between w-full">
             <div className="flex gap-1 text-nowrap items-center">
               <svg
                 width="24"
@@ -58,7 +102,7 @@ const Page = () => {
             </div>
 
 
-            <div className="flex rounded-[10px] p-[15px] text-nowrap items-center gap-2.5 shadow-[2px] bg-[#0000000c] max-w-[562px] w-full">
+            <div className="flex rounded-[10px] p-[15px] text-nowrap items-center gap-2.5 shadow-[2px] bg-[#0000000c] max-lg:max-w-[300px] max-lg:min-w-[150px]  max-w-[562px] w-full">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.333 11.3334L13.9997 14" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333Z" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -84,14 +128,27 @@ const Page = () => {
     {/* menu content  */}
 
     <div className="gap-[60px] grid w-full h-full">
-        <div className="flex-col gap-[15px] flex w-full">
+
+          {categories.map((category) => {
+            const foods = getFoodsByCategory(category.key);
+            const isExpanded = expandedCategories[category.key];
+          const displayedFoods = isExpanded ? foods : foods.slice(0, cardsPerRow);
+
+            return (
+        <div key={category.key} className="flex-col gap-[15px] flex w-full">
             <div className="flex w-full justify-between items-center">
-                <h3 className="text-[#1E1E1E] text-xl text-left font-medium">Local Dishes</h3>
-                <button className="font-medium text-xl text-right text-[#2a7f62] cursor-pointer">View All</button>
+                <h3 className="text-[#1E1E1E] text-xl text-left font-medium">{category.title}</h3>
+                {foods.length > cardsPerRow && (
+                <button
+                onClick={() => toggleCategory(category.key)}
+                className="font-medium text-xl text-right text-[#2a7f62] cursor-pointer">
+                  {isExpanded ? "View Less" : "View All"}
+                </button>
+                )}
             </div>
 
-          <div className="flex gap-[30px]">
-            {allFoods.map((food,index)=>(
+          <div ref={gridRef} className="grid gap-[30px] lg:grid-cols-4 md:grid-cols-3 grid-cols-2 xl:grid-cols-5 justify-between w-full">
+            {displayedFoods.map((food,index)=>(
               <FoodCard
                 key={food.id}
                 image={food.image}
@@ -103,6 +160,8 @@ const Page = () => {
             ))}
           </div>
         </div>
+        );
+        })}
     </div>
       </div>
     </div>

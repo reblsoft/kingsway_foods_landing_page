@@ -2,6 +2,7 @@
 // korkoe
 import useActiveSection from "@/hooks/useActiveSection";
 import { scrollToSection } from "@/lib/utils";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -37,15 +38,18 @@ const Header = () => {
     >
       <div className="mx-auto w-10/12 max-w-[1605px] h-14 lg:h-16 xl:h-20 2xl:h-28 lg:py-4">
         <div className="relative flex items-center w-full h-full justify-between max-md:py-3">
+
+          <Link href={'/'}>
           <img
             src="/images/Logo.svg"
             alt="Logo"
             className="max-w-[110px] max-h-[65px] w-full h-full max-lg:max-w-20"
           />
+          </Link>
 
           {pathname === "/our-menu" ? (
             // Show only button on /our-menu page
-            <button className="px-8 py-4 bg-[linear-gradient(112.8deg,#2A7F62_27.86%,#31AE83_100%)] text-white font-semibold rounded-full hover:bg-[#258560] transition-colors duration-300 shadow-lg text-lg w-full max-w-xs sm:w-auto sm:max-w-none">
+            <button className=" bg-[linear-gradient(112.8deg,#2A7F62_27.86%,#31AE83_100%)] text-white font-semibold rounded-full hover:bg-[#258560] transition-colors lg:py-2.5 lg:px-5 py-2 px-3 md:text-base text-sm duration-300 shadow-lg lg:text-lg">
               Download Our App
             </button>
           ) : (

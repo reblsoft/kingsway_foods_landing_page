@@ -92,7 +92,7 @@ const Home = () => {
         </div>
 
         {/* Right Column: Phone Image */}
-        <div className="relative flex justify-center items-center z-10 w-full">
+        <div className="relative flex justify-center max-lg:justify-end items-center z-10 w-full">
           {/* Main Phone Image */}
           <div className="relative z-10 w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]">
             <img src="/images/holdingPhoneMobile.svg" alt="" className="w-full h-full max-xl:hidden" />
