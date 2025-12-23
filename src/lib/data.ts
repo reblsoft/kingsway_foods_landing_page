@@ -345,6 +345,7 @@ export interface Food {
   price: string;
   discountedPrice: string | undefined;
   reviews: string;
+  // categoryTag:string;
   rating: number;
   tags: FoodTag[];
 }
