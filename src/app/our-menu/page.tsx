@@ -34,7 +34,7 @@ const Page = () => {
       }
       
       const result = await response.json();
-      console.log('Menu data:', result?.data?.categories);
+      console.log('Menu data:', result?.data);
       const allFoods = result?.data?.categories?.items ?? null;
       console.log('Foods: ',allFoods);
       setMenuData(result?.data?.categories ?? null);
@@ -71,6 +71,9 @@ useEffect(() => {
         .then(res => res.json())
         .then(data => {
           const address = data.address;
+
+          console.log("Data:", JSON.stringify(data,null,3));
+          console.log("Address:", JSON.stringify(address,null,3));
           const formattedAddress = `${address.house_number || ''} ${address.road || ''}, ${address.city || address.town || ''}`
             .replace(/\s+/g, ' ')
             .trim();
