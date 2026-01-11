@@ -341,12 +341,12 @@ export type FoodTag = 'local' | 'international' | 'continental' | 'asian' | 'new
 export interface Food {
   id: number;
   image: string;
-  title: string;
-  price: string;
-  discountedPrice: string | undefined;
+  name: string;
+  base_price: string;
+  current_price: string | undefined;
   reviews: string;
   // categoryTag:string;
-  rating: number;
+  total_ratings: number;
   tags: FoodTag[];
 }
 

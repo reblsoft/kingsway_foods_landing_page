@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import DownloadAppModal from "../fragments/DownloadAppModal";
 
 const Home = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -87,7 +88,7 @@ const Home = () => {
             <button onClick={()=>setIsModalOpen(true)} type="button" className="2xl:px-8 2xl:py-4 px-4 py-2 bg-[linear-gradient(112.8deg,#2A7F62_27.86%,#31AE83_100%)] cursor-pointer text-white font-semibold rounded-full hover:bg-[#258560] transition-colors duration-300 shadow-lg text-base 2xl:text-lg w-full max-w-xs sm:w-auto sm:max-w-none">
               Download Our App
             </button>
-            <Link href={"/our-menu"} className="2xl:px-8 px-4 py-2 2xl:py-4 bg-white text-[#1F2937] font-semibold rounded-full border border-[#2F9E73] hover:bg-gray-50 transition-colors duration-300 shadow-sm 2xl:text-lg text-base w-full max-w-xs sm:w-auto sm:max-w-none">
+            <Link href={"/our-menu"}  className="2xl:px-8 px-4 py-2 2xl:py-4 bg-white text-[#1F2937] font-semibold rounded-full border border-[#2F9E73] hover:bg-gray-50 transition-colors duration-300 shadow-sm 2xl:text-lg text-base w-full max-w-xs sm:w-auto sm:max-w-none">
               View Our Menu
             </Link>
           </div>
@@ -111,6 +112,10 @@ const Home = () => {
         </div>
       </div>
       </div>
+
+      {isModalOpen && (
+        <DownloadAppModal />
+      )}
     </>
   );
 };

@@ -1,17 +1,17 @@
 const FoodCard = ({
     image,
-    title,
-    price,
-    rating,
-    category,
-    discountedPrice,
+    name,
+    base_price,
+    total_ratings,
+    // category,
+    current_price,
 }: {
   image: string;
-  title: string;
-  price: string;
-  category: string;
-  rating: number;
-  discountedPrice?: string;
+  name: string;
+  base_price: string;
+  // category: string;
+  total_ratings: number;
+  current_price?: string;
 }) => {
   return (
     <div className="w-full flex flex-col max-h-[197px]">
@@ -22,7 +22,7 @@ const FoodCard = ({
       <div className="flex flex-col p-4 gap-[7px]">
         <div className="flex gap-4 items-center">
           <h2 className="font-bold text-xs text-nowrap font-[Mansfield] text-black">
-            {title}
+            {name}
           </h2>
         </div>
 
@@ -31,16 +31,16 @@ const FoodCard = ({
             <h4 className="flex gap-4 items-center">
               <span
                 className={`text-xs font-bold ${
-                  discountedPrice
+                  current_price
                     ? "line-through text-gray-400"
                     : "text-[#2A7F62]"
                 }`}
               >
-                {price}
+                {base_price}
               </span>
-              {discountedPrice && (
+              {current_price && (
                 <span className="text-[10px] text-[#2A7F62] font-semibold">
-                  {discountedPrice}
+                  {current_price}
                 </span>
               )}
             </h4>
@@ -60,7 +60,7 @@ const FoodCard = ({
                 </svg>
               </span>
               <span className="text-[#848A9C] text-[10px] font-bold">
-                {rating} Reviews
+                {total_ratings} Reviews
               </span>
             </h5>
           </div>

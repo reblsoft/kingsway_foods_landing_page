@@ -8,7 +8,7 @@ import { useEffect } from "react";
     children: React.ReactNode;
     }>) {
     useEffect(() => {
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         // Disable scrolling
         const originalOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";

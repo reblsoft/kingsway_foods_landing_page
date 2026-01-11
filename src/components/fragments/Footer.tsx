@@ -20,7 +20,7 @@ const Footer = () => {
           w-full object-cover
           max-md:max-w-[121px] max-md:max-h-[72px]
           md:max-w-[150px] md:max-h-[90px] 
-          lg:max-w-[181px] lg:max-h-[108px]
+          xl:max-w-[181px] xl:max-h-[108px]
         ">
           <img src="/images/kingswayLogo.svg" alt="Kingsway Placeholder" className="w-full" />
         </Link>
