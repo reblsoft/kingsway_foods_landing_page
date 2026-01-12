@@ -1,14 +1,14 @@
 const FoodCard = ({
     image,
     name,
-    base_price,
+    discounted_price,
     total_ratings,
     // category,
     current_price,
 }: {
   image: string;
   name: string;
-  base_price: string;
+  discounted_price: string;
   // category: string;
   total_ratings: number;
   current_price?: string;
@@ -29,6 +29,8 @@ const FoodCard = ({
         <div className="flex items-center w-full">
           <div className="grid gap-[7px]">
             <h4 className="flex gap-4 items-center">
+              
+              {discounted_price && (
               <span
                 className={`text-xs font-bold ${
                   current_price
@@ -36,8 +38,9 @@ const FoodCard = ({
                     : "text-[#2A7F62]"
                 }`}
               >
-                {base_price}
+                {discounted_price}
               </span>
+              )}
               {current_price && (
                 <span className="text-[10px] text-[#2A7F62] font-semibold">
                   {current_price}

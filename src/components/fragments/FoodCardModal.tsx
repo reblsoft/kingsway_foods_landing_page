@@ -4,10 +4,10 @@ import ModalLayout from './ModalLayout'
 interface FoodCardModalProps {
   food: {
     image: string;
-    title: string;
-    price: string;
-    discountedPrice?: string;
-    rating: number;
+    name: string;
+    discounted_price: string;
+    current_price?: string;
+    total_ratings: number;
     reviews: string;
   };
   onClose: () => void;
@@ -24,8 +24,8 @@ function FoodCardModal({ food, onClose }: FoodCardModalProps) {
 
             <div className="absolute inset-0">
                 <img
-                  src={food.image}
-                  alt={food.title}
+                  src="/images/menuFoods/yam_balls.jpg"
+                  alt={food.name}
                   className="w-full h-full rounded-t-[20px] object-cover"
                 />
   </div>
@@ -41,10 +41,10 @@ function FoodCardModal({ food, onClose }: FoodCardModalProps) {
           <div className="flex w-full items-center justify-between">
             <div className="grid text-left font-[Mansfield] gap-0.5">
               <h5 className="font-bold text-lg lg:text-2xl text-[#31BF8F]">
-                {food.discountedPrice || food.price}
+                {food.current_price || food.discounted_price}
               </h5>
-              {food.discountedPrice && (
-                <p className="text-[#E4E4E4] text-xs line-through">{food.price}</p>
+              {food.current_price && (
+                <p className="text-[#E4E4E4] text-xs line-through">{food.discounted_price}</p>
               )}
             </div>
 
@@ -65,12 +65,12 @@ function FoodCardModal({ food, onClose }: FoodCardModalProps) {
   </div>
         <div className="grid w-full h-1/2 font-[Mansfield]">
           <div className="w-full border-b border-[#E6E6E6] px-7.5 py-3.5">
-            <h3 className="text-black text-[17px] font-bold">{food.title}</h3>
+            <h3 className="text-black text-[17px] font-bold">{food.name}</h3>
           </div>
 
           <div className="w-full border-b border-[#E6E6E6] gap-2 flex items-center px-7.5 py-3.5">
             <img src="/icons/star.svg" alt="" className="" />
-            <h3 className="text-[#848A9C] text-base font-bold">{food.rating} Reviews</h3>
+            <h3 className="text-[#848A9C] text-base font-bold">{food.total_ratings} Reviews</h3>
           </div>
 
           <div className="w-full border-b border-[#E6E6E6] gap-2 flex items-center px-7.5 py-3.5">

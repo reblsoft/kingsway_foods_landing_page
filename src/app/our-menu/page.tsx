@@ -15,6 +15,7 @@ const Page = () => {
   const [userAddress, setUserAddress] = useState("Loading location...");
   const [locationAccess, setLocationAccess] = useState(null);
   const [menuData, setMenuData] = useState<any[] | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const gridRef = useRef(null);
 
@@ -35,7 +36,7 @@ const Page = () => {
       
       const result = await response.json();
       console.log('Menu data:', result?.data);
-      const allFoods = result?.data?.categories?.items ?? null;
+      const allFoods = result?.data?.categories ?? null;
       console.log('Foods: ',allFoods);
       setMenuData(result?.data?.categories ?? null);
     } catch (err) {
@@ -117,25 +118,29 @@ useEffect(() => {
     return () => window.removeEventListener('resize', updateCardsPerRow);
   }, []);
 
-  const categories = [
-    { key: "local", title: "Local Dishes" },
-    { key: "continental", title: "Continental" },
-    { key: "asian", title: "Asian Cuisine" },
-    { key: "international", title: "International" },
-    { key: "snacks", title: "Snacks" },
-    { key: "most-wanted", title: "Most Wanted" },
-    { key: "top-rated", title: "Top Rated" },
-    { key: "new", title: "New Arrivals" }
-  ];
+const getFilteredItems = (items) => {
+  if (!searchQuery) return items;
+  
+  return items.filter(item => 
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+};
 
-  const getFoodsByCategory = (categoryTag) => {
-    return allFoods.filter(food => food.tags.includes(categoryTag));
-  };
+const getFilteredCategories = () => {
+  if (!menuData) return [];
+  
+  return menuData
+    .map(category => ({
+      ...category,
+      items: getFilteredItems(category.items)
+    }))
+    .filter(category => category.items.length > 0);
+};
 
-  const toggleCategory = (categoryKey) => {
+  const toggleCategory = (categoryId) => {
     setExpandedCategories(prev => ({
       ...prev,
-      [categoryKey]: !prev[categoryKey]
+      [categoryId]: !prev[categoryId]
     }));
   };
 
@@ -231,7 +236,14 @@ useEffect(() => {
                 <path d="M11.333 11.3334L13.9997 14" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333Z" stroke="#292D32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <input type="text" placeholder="Search Foods" className="w-full placeholder:text-[#848a9c] outline-none h-full" />
+              <input 
+              type="search"
+              placeholder="Search Foods"
+              className="w-full placeholder:text-[#848a9c] outline-none h-full" 
+              
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              />
               <button className="w-fit cursor-pointer">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.97949 9.49996C1.97949 5.95461 1.97949 4.18193 3.08089 3.08052C4.1823 1.97913 5.95497 1.97913 9.50033 1.97913C13.0456 1.97913 14.8183 1.97913 15.9198 3.08052C17.0212 4.18193 17.0212 5.95461 17.0212 9.49996C17.0212 13.0453 17.0212 14.818 15.9198 15.9194C14.8183 17.0208 13.0456 17.0208 9.50033 17.0208C5.95497 17.0208 4.1823 17.0208 3.08089 15.9194C1.97949 14.818 1.97949 13.0453 1.97949 9.49996Z" stroke="#292D32" strokeLinejoin="round"/>
@@ -246,47 +258,71 @@ useEffect(() => {
         </div>
 
         {/* menu content */}
-        <div className="gap-[60px] grid w-full h-full">
-          
-          {menuData ? menuData.map((category) => {
-            const foods = getFoodsByCategory(category.items);
-            console.log(foods);
-            const isExpanded = expandedCategories[category.id];
-            const displayedFoods = isExpanded ? foods : foods.slice(0, cardsPerRow);
+<div className="gap-[60px] grid w-full h-full">
+  {menuData ? (
+    getFilteredCategories().length > 0 ? (
+      getFilteredCategories().map((category) => {
+        const isExpanded = expandedCategories[category.id] || false;
+        const displayedItems = isExpanded 
+          ? category.items 
+          : category.items.slice(0, cardsPerRow);
 
-            return (
-              <div key={category.id} className="flex-col gap-[15px] flex w-full">
-                <div className="flex w-full justify-between items-center">
-                  <h3 className="text-[#1E1E1E] text-xl text-left font-medium">{category.name}</h3>
-                  {foods.length > cardsPerRow && (
-                    <button
-                      onClick={() => toggleCategory(category.id)}
-                      className="font-medium text-xl text-right text-[#2a7f62] cursor-pointer">
-                      {isExpanded ? "View Less" : "View All"}
-                    </button>
-                  )}
-                </div>
+        return (
+          <div key={category.id} className="flex-col gap-[15px] flex w-full">
+            <div className="flex w-full justify-between items-center">
+              <h3 className="text-[#1E1E1E] text-xl text-left font-medium">
+                {category.name}
+              </h3>
+              {category.items.length > cardsPerRow && (
+                <button
+                  onClick={() => toggleCategory(category.id)}
+                  className="font-medium text-xl text-right text-[#2a7f62] cursor-pointer hover:text-[#1f5a47] transition-colors"
+                >
+                  {isExpanded ? "View Less" : "View All"}
+                </button>
+              )}
+            </div>
 
-                <div ref={gridRef} className="grid gap-[30px] lg:grid-cols-4 md:grid-cols-3 grid-cols-2 xl:grid-cols-5 justify-between w-full">
-                  {displayedFoods.map((food) => (
-                    <div key={food.id} onClick={() => handleFoodClick(food)} className="cursor-pointer">
-                      <FoodCard
-                        image={food.image}
-                        name={food.name}
-                        base_price={food.base_price}
-                        total_ratings={food.total_ratings}
-                        current_price={food.current_price}
-                      />
-                    </div>
-                  ))}
+            <div 
+              ref={gridRef} 
+              className="grid gap-[30px] lg:grid-cols-4 md:grid-cols-3 grid-cols-2 xl:grid-cols-5 justify-between w-full"
+            >
+              {displayedItems.map((item) => (
+                <div 
+                  key={item.id} 
+                  onClick={() => handleFoodClick(item)} 
+                  className="cursor-pointer"
+                >
+                  <FoodCard
+                    image="/images/menuFoods/yam_balls.jpg"
+                    name={item.name}
+                    discounted_price={item.discounted_price}
+                    total_ratings={item.total_ratings}
+                    current_price={item.current_price}
+                  />
                 </div>
-              </div>
-            );
-          }) : <div className="w-full h-screen flex items-center justify-center">
-                <p>No menu items available for your location.</p>
-                </div>
-      }
-        </div>
+              ))}
+            </div>
+          </div>
+        );
+      })
+    ) : (
+      <div className="w-full h-[400px] flex items-center justify-center">
+        <p className="text-[#828282] text-lg">
+          No menu items found matching `{searchQuery}`
+        </p>
+      </div>
+    )
+  ) : loading ? (
+    <div className="w-full h-screen flex items-center justify-center">
+      <p className="text-[#828282]">Loading menu...</p>
+    </div>
+  ) : (
+    <div className="w-full h-screen flex items-center justify-center">
+      <p className="text-[#828282]">No menu items available for your location.</p>
+    </div>
+  )}
+</div>
       </div>
 
       {/* Modal */}
