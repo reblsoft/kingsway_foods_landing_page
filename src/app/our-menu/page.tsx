@@ -296,6 +296,7 @@ const getFilteredCategories = () => {
                   <FoodCard
                     image="/images/menuFoods/yam_balls.jpg"
                     name={item.name}
+                    image_url={item.image_url}
                     discounted_price={item.discounted_price}
                     total_ratings={item.total_ratings}
                     current_price={item.current_price}

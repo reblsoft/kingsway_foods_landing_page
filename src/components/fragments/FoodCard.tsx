@@ -1,12 +1,12 @@
 const FoodCard = ({
-    image,
+    image_url,
     name,
     discounted_price,
     total_ratings,
     // category,
     current_price,
 }: {
-  image: string;
+  image_url: string;
   name: string;
   discounted_price: string;
   // category: string;
@@ -16,7 +16,7 @@ const FoodCard = ({
   return (
     <div className="w-full flex flex-col max-h-[197px]">
       <div className="h-full w-full rounded-[10px] overflow-hidden ">
-        <img src={image} alt="" className="w-full h-full object-cover" />
+        <img src={image_url} alt="" className="w-full h-full object-cover" />
       </div>
 
       <div className="flex flex-col p-4 gap-[7px]">

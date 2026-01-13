@@ -3,7 +3,7 @@ import ModalLayout from './ModalLayout'
 
 interface FoodCardModalProps {
   food: {
-    image: string;
+    image_url: string;
     name: string;
     discounted_price: string;
     current_price?: string;
@@ -24,7 +24,7 @@ function FoodCardModal({ food, onClose }: FoodCardModalProps) {
 
             <div className="absolute inset-0">
                 <img
-                  src="/images/menuFoods/yam_balls.jpg"
+                  src={food.image_url}
                   alt={food.name}
                   className="w-full h-full rounded-t-[20px] object-cover"
                 />
