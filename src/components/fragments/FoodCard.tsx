@@ -1,5 +1,6 @@
 const FoodCard = ({
     image_url,
+    // image_url,
     name,
     discounted_price,
     total_ratings,
@@ -7,6 +8,7 @@ const FoodCard = ({
     current_price,
 }: {
   image_url: string;
+  // image_url: string;
   name: string;
   discounted_price: string;
   // category: string;
@@ -16,7 +18,8 @@ const FoodCard = ({
   return (
     <div className="w-full flex flex-col max-h-[197px]">
       <div className="h-full w-full rounded-[10px] overflow-hidden ">
-        <img src={image_url} alt="" className="w-full h-full object-cover" />
+        <img src="/images/menuFoods/yam_balls.jpg" alt="" className="w-full h-full object-cover" />
+        {/* <img src={image_url} alt={name} className="w-full h-full object-cover" /> */}
       </div>
 
       <div className="flex flex-col p-4 gap-[7px]">

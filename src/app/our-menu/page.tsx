@@ -1,23 +1,37 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { allFoods } from "@/lib/data";
 import FoodCard from "@/components/fragments/FoodCard";
 import FoodCardModal from "@/components/fragments/FoodCardModal";
-import { useState, useLayoutEffect, useRef, useEffect } from "react";  
-import { div } from "motion/react-client";
+import { useState, useLayoutEffect, useRef, useEffect, useMemo, useCallback } from "react";
+
+interface MenuItem {
+  id: string;
+  name: string;
+  image_url: string;
+  discounted_price: string;
+  total_ratings: number;
+  current_price?: string;
+  reviews: string;
+}
+
+interface MenuCategory {
+  id: string;
+  name: string;
+  items: MenuItem[];
+}
 
 const Page = () => {
   const router = useRouter();
-  const [expandedCategories, setExpandedCategories] = useState({});
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [cardsPerRow, setCardsPerRow] = useState(5);
-  const [selectedFood, setSelectedFood] = useState(null);
+  const [selectedFood, setSelectedFood] = useState<MenuItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userAddress, setUserAddress] = useState("Loading location...");
-  const [locationAccess, setLocationAccess] = useState(null);
-  const [menuData, setMenuData] = useState<any[] | null>(null);
+  const [locationAccess, setLocationAccess] = useState<boolean | null>(null);
+  const [menuData, setMenuData] = useState<MenuCategory[] | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
-  const gridRef = useRef(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
 
 //   const baseURL = process.env.NEXT_PUBLIC_BASE_URL
@@ -61,7 +75,7 @@ useEffect(() => {
     });
   }, []);
 
-  const attemptLocation = () => {
+  const attemptLocation = useCallback(() => {
     navigator.geolocation.getCurrentPosition(({ coords }) => {
       const { latitude, longitude } = coords;
 
@@ -84,13 +98,13 @@ useEffect(() => {
         .catch(err => console.error('Error fetching address:', err));
       fetchMenuItems(latitude, longitude);
     });
-  };
+  }, []);
 
   useEffect(() => {
     if (locationAccess) {
       attemptLocation();
     }
-  }, [locationAccess]);
+  }, [locationAccess, attemptLocation]);
 
   const requestLocation = () => {
     navigator.geolocation.getCurrentPosition(
@@ -118,41 +132,40 @@ useEffect(() => {
     return () => window.removeEventListener('resize', updateCardsPerRow);
   }, []);
 
-const getFilteredItems = (items) => {
-  if (!searchQuery) return items;
   
-  return items.filter(item => 
-    item.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-};
+  const filteredCategories = useMemo(() => {
+    if (!menuData) return [];
+    
+    const lowerSearchQuery = searchQuery.toLowerCase();
+    
+    return menuData
+      .map(category => ({
+        ...category,
+        items: searchQuery 
+          ? category.items.filter(item => 
+              item.name.toLowerCase().includes(lowerSearchQuery)
+            )
+          : category.items
+      }))
+      .filter(category => category.items.length > 0);
+  }, [menuData, searchQuery]);
 
-const getFilteredCategories = () => {
-  if (!menuData) return [];
-  
-  return menuData
-    .map(category => ({
-      ...category,
-      items: getFilteredItems(category.items)
-    }))
-    .filter(category => category.items.length > 0);
-};
-
-  const toggleCategory = (categoryId) => {
+  const toggleCategory = useCallback((categoryId: string) => {
     setExpandedCategories(prev => ({
       ...prev,
       [categoryId]: !prev[categoryId]
     }));
-  };
+  }, []);
 
-  const handleFoodClick = (food) => {
+  const handleFoodClick = useCallback((food: MenuItem) => {
     setSelectedFood(food);
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedFood(null);
-  };
+  }, []);
 
   if (locationAccess === null) {
     return (
@@ -260,8 +273,8 @@ const getFilteredCategories = () => {
         {/* menu content */}
 <div className="gap-[60px] grid w-full h-full">
   {menuData ? (
-    getFilteredCategories().length > 0 ? (
-      getFilteredCategories().map((category) => {
+    filteredCategories.length > 0 ? (
+      filteredCategories.map((category) => {
         const isExpanded = expandedCategories[category.id] || false;
         const displayedItems = isExpanded 
           ? category.items 
@@ -294,7 +307,6 @@ const getFilteredCategories = () => {
                   className="cursor-pointer"
                 >
                   <FoodCard
-                    image="/images/menuFoods/yam_balls.jpg"
                     name={item.name}
                     image_url={item.image_url}
                     discounted_price={item.discounted_price}
@@ -310,7 +322,7 @@ const getFilteredCategories = () => {
     ) : (
       <div className="w-full h-[400px] flex items-center justify-center">
         <p className="text-[#828282] text-lg">
-          No menu items found matching `{searchQuery}`
+          No menu items found matching &quot;{searchQuery}&quot;
         </p>
       </div>
     )
