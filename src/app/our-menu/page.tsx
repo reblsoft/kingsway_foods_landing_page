@@ -216,7 +216,7 @@ useEffect(() => {
   }
 
   return (
-    <div className="bg-white max-lg:mt-12 xl:mt-28 w-full h-full">
+    <div className="bg-white mt-14 w-full h-full">
       <div className="max-w-[1605px] w-10/12 flex-col flex mx-auto gap-10.5 py-10.5 lg:gap-20.5 lg:py-20.5">
         {/* menu header */}
         <div className="flex max-lg:flex-col max-lg:gap-10.5 max-lg:items-start justify-between h-full py-[8.5px] w-full items-center">
@@ -298,7 +298,7 @@ useEffect(() => {
 
             <div 
               ref={gridRef} 
-              className="grid gap-[30px] lg:grid-cols-4 md:grid-cols-3 grid-cols-2 xl:grid-cols-5 justify-between w-full"
+              className="grid gap-4 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 xl:grid-cols-5 justify-between w-full"
             >
               {displayedItems.map((item) => (
                 <div 

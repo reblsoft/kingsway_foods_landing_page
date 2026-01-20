@@ -43,7 +43,7 @@ const Header = () => {
           <img
             src="/images/Logo.svg"
             alt="Logo"
-            className="max-w-[110px] max-h-[65px] w-full h-full max-lg:max-w-20"
+            className="xl:w-[90px] max-h-[65px] w-full h-full w-20"
           />
           </Link>
 

@@ -16,10 +16,10 @@ const FoodCard = ({
   current_price?: string;
 }) => {
   return (
-    <div className="w-full flex flex-col max-h-[197px]">
+    <div className="lg:w-[196px] w-40  flex flex-col">
       <div className="h-full w-full rounded-[10px] overflow-hidden ">
         {/* <img src="/images/menuFoods/yam_balls.jpg" alt="" className="w-full h-full object-cover" /> */}
-        <img src={image_url} alt={name} className="w-full h-full object-cover" />
+        <img src={image_url} alt={name} className="w-full h-[121px] object-center object-cover" />
       </div>
 
       <div className="flex flex-col p-4 gap-[7px]">
