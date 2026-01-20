@@ -8,6 +8,15 @@ interface DownloadAppModalProps {
 const DownloadAppModal = ({ onClose }: DownloadAppModalProps) => {
   return (
     <ModalLayout onClose={onClose}>
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors z-50"
+          aria-label="Close modal"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       <div className="flex flex-col rounded-[20px] lg:h-[500px] md:h-[560px] h-[560px] bg-[#32a071] md:w-[500px] lg:w-[800px] xl:md:w-[1133px] w-[320px] mx-auto max-w-[95vw]">
         <div className="lg:w-11/12 w-10/12 flex m-auto lg:items-end items-center max-lg:flex-col-reverse gap-6 lg:gap-10 lg:h-full  max-lg:justify-center">
           <div className="flex flex-col lg:self-center lg:gap-16 gap-8 md:gap-10 items-end w-full lg:w-auto">
