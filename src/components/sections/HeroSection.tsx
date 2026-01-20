@@ -114,7 +114,7 @@ const Home = () => {
       </div>
 
       {isModalOpen && (
-        <DownloadAppModal />
+        <DownloadAppModal onClose={() => setIsModalOpen(false)} />
       )}
     </>
   );
