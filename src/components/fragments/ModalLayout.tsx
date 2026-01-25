@@ -29,7 +29,7 @@ function ModalLayout({ children, onClose }: ModalLayoutProps) {
 
   return (
     <div 
-      className="max-sm:bg-black/30 bg-black/50 h-full w-full min-h-screen min-w-screen fixed z-40 top-0 backdrop-blur-xs flex justify-center items-center"
+      className="max-sm:bg-black/30 bg-black/50 h-full w-full min-h-svh min-w-screen fixed z-40 top-0 backdrop-blur-xs flex justify-center items-center"
       onClick={onClose}
     >
       <div onClick={(e) => e.stopPropagation()}>

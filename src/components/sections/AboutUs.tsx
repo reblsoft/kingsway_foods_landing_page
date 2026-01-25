@@ -29,7 +29,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 items-start gap-10 py-16">
           {featureCards.map((item, i) => (
             <div key={i} className="flex flex-col text-[#252b33] gap-2.5 items-center">
               <img src={item.image} alt={item.capText} className="mb-4" />

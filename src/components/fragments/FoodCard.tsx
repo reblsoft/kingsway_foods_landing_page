@@ -4,11 +4,11 @@ const FoodCard = ({
     name,
     discounted_price,
     total_ratings,
-    // category,
+    preparation_time,
     current_price,
 }: {
   image_url: string;
-  // image_url: string;
+  preparation_time: number;
   name: string;
   discounted_price: string;
   // category: string;
