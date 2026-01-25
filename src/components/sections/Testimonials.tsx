@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from "motion/react";
+
 
 const Testimonials = () => {
   const reviews = [
@@ -6,7 +8,7 @@ const Testimonials = () => {
       text: "The Kingsway Foods app has completely changed how I order my meals. The menu updates are always on point, delivery is fast, and I love tracking my rider in real time. The loyalty games are a fun bonus—I've actually redeemed points for food! Highly recommend.",
       name: "Allhalal",
       subtitle: "Finally a great app with variety",
-      image: "/images/profile.svg"
+      image: "/images/profile.png"
     },
     {
       text: "Best food delivery experience I've had. The interface is clean, ordering is seamless, and the fufu always arrives hot. Customer support responded within minutes when I had a question. This is now my go-to app for meals. Please be generous with the meat next time😂❤️",
@@ -24,6 +26,15 @@ const Testimonials = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % reviews.length);
+    }, 10000); // 20 seconds
+
+    return () => clearInterval(interval);
+  }, [reviews.length]);
+
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % reviews.length);
   };
@@ -36,29 +47,9 @@ const Testimonials = () => {
   const reviewsLeft = reviews.length - currentIndex - 1;
 
   return (
-
     <>      
-    <style jsx>{`
-        @keyframes bop {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-50px);
-          }
-        }
-        
-        .bop-animation-1 {
-          animation: bop 3s ease-in-out infinite;
-        }
-        
-        .bop-animation-2 {
-          animation: bop 3s ease-in-out infinite;
-          animation-delay: 0.5s;
-        }
-      `}</style>
     <section id="testimonials" className="flex relative flex-col md:py-24 gap-4 md:gap-[45px] px-6 max-md:py-24.5 w-full mx-auto md:px-32 lg:px-[153px]">
-      <div className="absolute bottom-0 -left-20 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-84 lg:h-84 z-10 hidden lg:block bop-animation-2">
+      <div className="absolute bottom-0 -left-20 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-84 lg:h-84 z-10 hidden lg:block ">
         <img
           src="/images/samosa.svg"
           alt="Food Bowl"
@@ -71,48 +62,64 @@ const Testimonials = () => {
       </div>
 
       <aside className="flex flex-col md:flex-row items-center gap-14 md:justify-center mx-auto w-11/12 max-w-[1605px] ">
-        <div className="flex-col flex md:w-4/6 lg:w-2/3 gap-7.5 lg:max-w-[665px]">
-          <p className="text-[#252b33] text-base lg:text-lg leading text-justify lg:text-left">
-            {currentReview.text}
-          </p>
+<div className="flex-col flex md:w-4/6 lg:w-2/3 gap-7.5 lg:max-w-[665px]">
 
-          <div className="flex items-center gap-4.5">
-            <div className="rounded-full border-2 w-20 h-20 border-[#2a7f62] overflow-hidden">
-              <img src={currentReview.image} alt="" className="w-full  h-full object-cover" />
-            </div>
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={currentIndex}
+      initial={{ opacity: 0, x: -40 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 40 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1] // smooth cubic-bezier
+      }}
+      className="flex flex-col gap-7.5"
+    >
+      <p className="text-[#252b33] text-base lg:text-lg leading text-justify lg:text-left">
+        {currentReview.text}
+      </p>
 
-            <div className="flex-col flex gap-1">
-              <h5 className="text-[#2a7f62] text-[22px] font-normal">{currentReview.name}</h5>
-              <p className="text-[#828282] text-lg font-normal">{currentReview.subtitle}</p>
-            </div>
-          </div>
-
-          <div className="flex gap-8.5 items-center">
-            {/* <button onClick={handlePrev} className="cursor-pointer">
-
-              <img src="/icons/arrow-left.svg" alt="Previous review" />
-            </button> */}
-            <span 
-              className={`rounded-[30px] flex justify-center items-center w-[60px] h-[35px] cursor-pointer ${
-                reviewsLeft < reviews.length - 1 ? 'bg-white' : 'bg-transparent'
-              }`}
-              onClick={handlePrev}
-            >
-            <img src="/icons/arrow-left.svg" alt="Previous review" />
-            </span>
-            <span 
-              className={`rounded-[30px] flex justify-center items-center w-[60px] h-[35px] cursor-pointer ${
-                reviewsLeft > 0 ? 'bg-white' : 'bg-transparent'
-              }`}
-              onClick={handleNext}
-            >
-              <img src="/icons/arrow-right.svg" alt="Next review" />
-            </span>
-          </div>
+      <div className="flex items-center gap-4.5">
+        <div className="rounded-full border-2 w-20 h-20 p-1 border-[#2a7f62] overflow-hidden">
+          <img
+            src={currentReview.image}
+            alt=""
+            className="w-full h-full object-cover rounded-full"
+          />
         </div>
 
+        <div className="flex-col flex gap-1">
+          <h5 className="text-[#2a7f62] text-[22px] font-normal">
+            {currentReview.name}
+          </h5>
+          <p className="text-[#828282] text-lg font-normal">
+            {currentReview.subtitle}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  </AnimatePresence>
+
+  <div className="flex justify-center gap-2 mt-6">
+  {reviews.map((_, index) => {
+    const pos = index === currentIndex ? 0 : 1;
+
+    return (
+      <span 
+        key={index}
+        className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
+          pos === 0 ? 'bg-[#2a7f62]' : 'bg-[#cccccc]'
+        }`}
+      ></span>
+    );
+  })}
+</div>
+
+</div>
+
+
         <div className="h-full md:w-1/3">
-        
           <img src="/images/jollof.svg" alt="" className="" />
         </div>
       </aside>

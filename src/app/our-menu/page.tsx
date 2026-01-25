@@ -9,8 +9,11 @@ interface MenuItem {
   name: string;
   image_url: string;
   discounted_price: string;
+  is_available: boolean;
   total_ratings: number;
+  kitchenAddress?:string;
   current_price?: string;
+  preparation_time?: number;
   reviews: string;
 }
 
@@ -25,13 +28,17 @@ const Page = () => {
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [cardsPerRow, setCardsPerRow] = useState(5);
   const [selectedFood, setSelectedFood] = useState<MenuItem | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [userAddress, setUserAddress] = useState("Loading location...");
+  const [kitchenAdress, setKitchenAddress] = useState("");
   const [locationAccess, setLocationAccess] = useState<boolean | null>(null);
   const [menuData, setMenuData] = useState<MenuCategory[] | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const gridRef = useRef<HTMLDivElement>(null);
+
+  const isLocationReady = locationAccess === true;
+
 
 
 //   const baseURL = process.env.NEXT_PUBLIC_BASE_URL
@@ -50,6 +57,10 @@ const Page = () => {
       
       const result = await response.json();
       console.log('Menu data:', result?.data);
+
+      const restaurantAddress = result?.data?.branch?.address;
+      setKitchenAddress(restaurantAddress);
+      console.log('Restaurant: ',restaurantAddress);
       const allFoods = result?.data?.categories ?? null;
       console.log('Foods: ',allFoods);
       setMenuData(result?.data?.categories ?? null);
@@ -177,43 +188,8 @@ useEffect(() => {
     );
   }
 
-  //   if (!menuData || !menuData || menuData.length === 0) {
-  //   return (
-  //     <div className="w-full h-screen flex items-center justify-center">
-  //       <p>No menu items available for your location.</p>
-  //     </div>
-  //   );
-  // }
 
-  if (!locationAccess) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="max-w-sm p-8 flex-col flex gap-8 rounded-lg text-center">
-          <p className="text-[#828282] text-base font-medium flex gap-2.5 flex-col">
-            <span>Please allow us locate you before we can show you our Menu.</span>
-            <span className="flex">Click on the  
-              <span className="p-1.5 w-6.5 h-6.5 m-auto flex items-center justify-center bg-[#F5F8F7] rounded-full">
-                <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M8.52557 3.65585C9.23885 3.63872 9.87599 3.20552 10.1541 2.54857C10.2135 2.5736 10.277 2.58741 10.3414 2.58928H13.5986C13.9359 2.58928 14.2093 2.31589 14.2093 1.97865C14.2093 1.64141 13.9359 1.36802 13.5986 1.36802H10.3821C10.347 1.36341 10.3114 1.36341 10.2763 1.36802C10.0431 0.451745 9.14557 -0.132187 8.21324 0.0257282C7.28092 0.183644 6.62585 1.03054 6.70744 1.9725C6.78904 2.91446 7.57997 3.63614 8.52557 3.63143V3.65585ZM8.52557 1.25403C8.85387 1.25403 9.12 1.52013 9.12 1.84838C9.12 2.17663 8.85387 2.44273 8.52557 2.44273C8.19728 2.44273 7.93114 2.17663 7.93114 1.84838C7.93114 1.52013 8.19728 1.25403 8.52557 1.25403Z" fill="black"/>
-                  <path d="M0.610714 1.36802H5.49643C5.83372 1.36802 6.10714 1.64141 6.10714 1.97865C6.10714 2.31589 5.83372 2.58928 5.49643 2.58928H0.610714C0.273426 2.58928 0 2.31589 0 1.97865C0 1.64141 0.273426 1.36802 0.610714 1.36802Z" fill="black"/>
-                  <path fillRule="evenodd" clipRule="evenodd" d="M2.166 7.88143C2.42106 7.16011 3.10269 6.67749 3.86786 6.67645V6.66016C4.78866 6.65899 5.56459 7.34713 5.67332 8.26137C5.78206 9.17561 5.18919 10.0265 4.29379 10.2413C3.39839 10.4561 2.48395 9.96675 2.166 9.10269H0.610714C0.273426 9.10269 0 8.8293 0 8.49206C0 8.15482 0.273426 7.88143 0.610714 7.88143H2.166ZM3.27441 8.53489C3.28001 8.85875 3.54391 9.11849 3.86786 9.11898V9.08641C4.19615 9.08641 4.46229 8.82031 4.46229 8.49206C4.44453 8.16865 4.17106 7.91899 3.84733 7.93067C3.52359 7.94234 3.26882 8.21104 3.27441 8.53489Z" fill="black"/>
-                  <path d="M7.125 7.88143H13.6393C13.9766 7.88143 14.25 8.15482 14.25 8.49206C14.25 8.8293 13.9766 9.10269 13.6393 9.10269H7.125C6.78771 9.10269 6.51429 8.8293 6.51429 8.49206C6.51429 8.15482 6.78771 7.88143 7.125 7.88143Z" fill="black"/>
-                </svg>
-              </span>
-              Button in the URL Bar.
-            </span>
-            <span>Or click on the button below.</span>
-          </p>
-          <button
-            onClick={requestLocation}
-            className="px-6 py-2 text-white w-full max-w-[230px] mx-auto rounded-lg bg-linear-to-r from-[#2a7f62] from-29% to-[#31ae83] to-100% transition"
-          >
-            Enable Location
-          </button>
-        </div>
-      </div>
-    );
-  }
+
 
   return (
     <div className="bg-white mt-14 w-full h-full">
@@ -237,9 +213,9 @@ useEffect(() => {
           <div className="flex gap-3.5 max-lg:flex-col lg:items-center max-lg:justify-between w-fit">
             <div className="flex gap-1 text-nowrap items-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.5 9C14.5 10.3807 13.3807 11.5 12 11.5C10.6193 11.5 9.5 10.3807 9.5 9C9.5 7.61929 10.6193 6.5 12 6.5C13.3807 6.5 14.5 7.61929 14.5 9Z" stroke="#828282" strokeWidth="1.5"/>
-                <path d="M18.2222 17C19.6167 18.9885 20.2838 20.0475 19.8865 20.8999C19.8466 20.9854 19.7999 21.0679 19.7469 21.1467C19.1724 22 17.6875 22 14.7178 22H9.28223C6.31251 22 4.82765 22 4.25311 21.1467C4.20005 21.0679 4.15339 20.9854 4.11355 20.8999C3.71619 20.0475 4.38326 18.9885 5.77778 17" stroke="#828282" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M13.2574 17.4936C12.9201 17.8184 12.4693 18 12.0002 18C11.531 18 11.0802 17.8184 10.7429 17.4936C7.6543 14.5008 3.51519 11.1575 5.53371 6.30373C6.6251 3.67932 9.24494 2 12.0002 2C14.7554 2 17.3752 3.67933 18.4666 6.30373C20.4826 11.1514 16.3536 14.5111 13.2574 17.4936Z" stroke="#828282" strokeWidth="1.5"/>
+                <path d="M14.5 9C14.5 10.3807 13.3807 11.5 12 11.5C10.6193 11.5 9.5 10.3807 9.5 9C9.5 7.61929 10.6193 6.5 12 6.5C13.3807 6.5 14.5 7.61929 14.5 9Z" stroke={isLocationReady ? "#2a7f62" : "#ff4d4f"} style={{ transition: "stroke 0.3s ease" }} strokeWidth="1.5"/>
+                <path d="M18.2222 17C19.6167 18.9885 20.2838 20.0475 19.8865 20.8999C19.8466 20.9854 19.7999 21.0679 19.7469 21.1467C19.1724 22 17.6875 22 14.7178 22H9.28223C6.31251 22 4.82765 22 4.25311 21.1467C4.20005 21.0679 4.15339 20.9854 4.11355 20.8999C3.71619 20.0475 4.38326 18.9885 5.77778 17" stroke={isLocationReady ? "#2a7f62" : "#ff4d4f"} style={{ transition: "stroke 0.3s ease" }} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M13.2574 17.4936C12.9201 17.8184 12.4693 18 12.0002 18C11.531 18 11.0802 17.8184 10.7429 17.4936C7.6543 14.5008 3.51519 11.1575 5.53371 6.30373C6.6251 3.67932 9.24494 2 12.0002 2C14.7554 2 17.3752 3.67933 18.4666 6.30373C20.4826 11.1514 16.3536 14.5111 13.2574 17.4936Z" stroke={isLocationReady ? "#2a7f62" : "#ff4d4f"} style={{ transition: "stroke 0.3s ease" }} strokeWidth="1.5"/>
               </svg>
               <span className="text-[#828282] text-sm font-medium">{userAddress}</span>
             </div>
@@ -312,6 +288,7 @@ useEffect(() => {
                     discounted_price={item.discounted_price}
                     total_ratings={item.total_ratings}
                     current_price={item.current_price}
+                    preparation_time={item.preparation_time}
                   />
                 </div>
               ))}
@@ -340,7 +317,7 @@ useEffect(() => {
 
       {/* Modal */}
       {isModalOpen && selectedFood && (
-        <FoodCardModal food={selectedFood} onClose={handleCloseModal} />
+        <FoodCardModal food={selectedFood} kitchenAddress={kitchenAdress} onClose={handleCloseModal} />
       )}
     </div>
   );
