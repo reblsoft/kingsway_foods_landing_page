@@ -19,16 +19,15 @@ interface FoodCardModalProps {
 function FoodCardModal({ food, onClose, kitchenAddress }: FoodCardModalProps) {
   return (
     <ModalLayout onClose={onClose}>
-      <div className="lg:w-[566px]  h-full flex flex-col overflow-hidden rounded-[20px]">
+      <div className="w-full max-lg:w-4/5 h-full flex flex-col mx-auto overflow-hidden rounded-[20px]">
         <div className="mx-auto flex flex-col">
-          <div className="relative w-full h-[300px] lg:h-[400px] overflow-hidden">
+          <div className="relative lg:w-[566px] h-[300px] lg:h-[400px] overflow-hidden">
             <img src={food.image_url} alt={food.name} className="w-full h-full object-cover" />
             <div className="absolute bottom-0 w-full h-full bg-linear-to-b from-black/50 via-transparent to-black/80   flex-col flex justify-between px-4 py-2">
 
             <div className="flex flex-col max-w-9/10 max-h-9/10 m-auto h-full w-full justify-between items-start">
-              <button className="">
-
-               <img src="/icons/white-arrow-left.svg" alt="" className="w-7 h-7" />
+              <button onClick={onClose} className="cursor-pointer">
+                <img src="/icons/white-arrow-left.svg" alt="" className="w-7 h-7" />
               </button>
 
 
@@ -125,7 +124,7 @@ function FoodCardModal({ food, onClose, kitchenAddress }: FoodCardModalProps) {
           </div>
 
           <div className="px-4.5 py-7.5 w-full  flex justify-center items-center">
-            <button className="w-3/6  bg-[#2A7F62] text-white py-4 rounded-full text-base font-semibold">Order from the mobile app</button>
+            <button className="w-4/6  bg-[#2A7F62] text-white py-4 rounded-full text-base font-semibold">Order from the mobile app</button>
           </div>
         </div>
       </div>
